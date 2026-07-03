@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPFEST CTF 2026 • Complete Guide (Ibas & Rezi)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; }
+        .section-header { font-size: 1.65rem; line-height: 1.1; font-weight: 700; letter-spacing: -.025em; }
+        .roadmap-card { transition: all 0.3s ease; }
+        .roadmap-card:hover { transform: translateY(-3px); }
+        .checklist-item { transition: all 0.2s ease; }
+        .nav-active { border-bottom: 3px solid #c026d3; color: white; }
+        .progress-bar { transition: width 0.4s ease; }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+
+    <!-- Navbar -->
+    <nav class="bg-zinc-900 border-b border-zinc-800 sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-x-3">
+                    <div class="flex items-center gap-x-2">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-600 flex items-center justify-center">
+                            <i class="fa-solid fa-flag text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <span class="font-display text-2xl font-semibold tracking-tighter">COMPFEST CTF 2026</span>
+                            <span class="text-xs text-zinc-500 block -mt-1">Complete Guide • Ibas &amp; Rezi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-2 text-sm">
+                    <a href="#roadmap" class="px-4 py-2 hover:bg-zinc-800 rounded-xl transition-colors">Roadmap</a>
+                    <a href="#resources" class="px-4 py-2 hover:bg-zinc-800 rounded-xl transition-colors">Resources</a>
+                    <a href="#checklists" class="px-4 py-2 hover:bg-zinc-800 rounded-xl transition-colors">Checklists</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="max-w-screen-xl mx-auto px-6 pt-10 pb-8">
+        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-emerald-900 text-emerald-400 mb-6 text-sm font-medium">
+                    <i class="fa-solid fa-check-double"></i>
+                    <span>100% FREE • Real-time Collaboration</span>
+                </div>
+                <h1 class="text-6xl lg:text-7xl font-display font-bold tracking-tighter leading-none">
+                    Complete CTF<br>
+                    <span class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">Preparation Guide</span>
+                </h1>
+                <p class="mt-6 text-xl text-zinc-400">8-week roadmap + 100% free resources</p>
+            </div>
+            
+            <div class="lg:w-80 w-full bg-zinc-900 border border-emerald-800 rounded-3xl p-6">
+                <div class="text-emerald-400 text-xs tracking-widest mb-4 font-medium">KEY DATES</div>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between"><span>Today</span> <span class="font-mono text-emerald-400">4 July 2026</span></div>
+                    <div class="flex justify-between"><span>Introduction Session</span> <span class="font-mono">11 July</span></div>
+                    <div class="flex justify-between"><span>Hacker Class</span> <span class="font-mono">1–16 Aug</span></div>
+                    <div class="flex justify-between border-t border-zinc-700 pt-3 font-semibold">
+                        <span>Preliminary Round</span> 
+                        <span class="font-mono text-pink-400">29 Aug 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Links -->
+    <div class="max-w-screen-xl mx-auto px-6 pb-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a href="https://compfest.link/discordctfcompfest18" target="_blank" class="flex items-center gap-x-4 p-5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-emerald-500 rounded-2xl transition-all">
+                <div class="w-11 h-11 flex-shrink-0 bg-[#5865F2] rounded-2xl flex items-center justify-center"><i class="fa-brands fa-discord text-white text-2xl"></i></div>
+                <div><div class="font-semibold">Official Discord</div><div class="text-xs text-zinc-400">compfest.link/discordctfcompfest18</div></div>
+            </a>
+            <a href="https://compfest.id/competition/ctf" target="_blank" class="flex items-center gap-x-4 p-5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-emerald-500 rounded-2xl transition-all">
+                <div class="w-11 h-11 flex-shrink-0 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl flex items-center justify-center"><i class="fa-solid fa-globe text-white text-2xl"></i></div>
+                <div><div class="font-semibold">Official CTF Page</div><div class="text-xs text-zinc-400">Rules, FAQ, Hacker Class</div></div>
+            </a>
+            <a href="mailto:ctf@compfest.id" class="flex items-center gap-x-4 p-5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-emerald-500 rounded-2xl transition-all">
+                <div class="w-11 h-11 flex-shrink-0 bg-zinc-700 rounded-2xl flex items-center justify-center"><i class="fa-solid fa-envelope text-white text-2xl"></i></div>
+                <div><div class="font-semibold">Contact Organizers</div><div class="text-xs text-zinc-400">ctf@compfest.id</div></div>
+            </a>
+        </div>
+    </div>
+
+    <!-- ROADMAP SECTION -->
+    <div id="roadmap" class="max-w-screen-xl mx-auto px-6 py-10 border-t border-zinc-800">
+        <div class="mb-8">
+            <span class="text-xs font-semibold tracking-widest text-emerald-400">100% FREE • 8 WEEKS</span>
+            <h2 class="section-header">Learning Roadmap</h2>
+        </div>
+
+        <div class="space-y-4">
+            <!-- Week 1 -->
+            <div class="roadmap-card bg-zinc-900 border border-zinc-700 rounded-3xl p-6">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-y-4">
+                    <div class="lg:w-56 flex-shrink-0">
+                        <div class="flex items-center gap-x-3">
+                            <div class="px-3.5 py-1 rounded-2xl w-fit bg-emerald-600 text-white text-xs font-bold">WEEK 1</div>
+                            <div class="text-xs text-zinc-400 font-mono">3 – 9 JULY</div>
+                        </div>
+                        <div class="mt-2 font-semibold text-xl">Linux Fundamentals</div>
+                    </div>
+                    <div class="flex-1 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Tasks</div>
+                                <ul class="space-y-1 text-zinc-300">
+                                    <li>• Complete <strong>OverTheWire Bandit</strong> levels 0–20</li>
+                                    <li>• Explore easy challenges on PicoCTF</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Goal</div>
+                                <p class="text-zinc-300">Become comfortable using the terminal without a GUI.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 2 -->
+            <div class="roadmap-card bg-zinc-900 border border-zinc-700 rounded-3xl p-6">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-y-4">
+                    <div class="lg:w-56 flex-shrink-0">
+                        <div class="flex items-center gap-x-3">
+                            <div class="px-3.5 py-1 rounded-2xl w-fit bg-emerald-600 text-white text-xs font-bold">WEEK 2</div>
+                            <div class="text-xs text-zinc-400 font-mono">10 – 16 JULY</div>
+                        </div>
+                        <div class="mt-2 font-semibold text-xl">Networking + Intro Session</div>
+                    </div>
+                    <div class="flex-1 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Tasks</div>
+                                <ul class="space-y-1 text-zinc-300">
+                                    <li>• Watch free Networking videos</li>
+                                    <li>• Practice basic nmap</li>
+                                    <li>• Attend official <strong>Introduction Session</strong> (11 July)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Goal</div>
+                                <p class="text-zinc-300">Understand ports, services, and basic scanning.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weeks 3-4 -->
+            <div class="roadmap-card bg-zinc-900 border border-zinc-700 rounded-3xl p-6">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-y-4">
+                    <div class="lg:w-56 flex-shrink-0">
+                        <div class="flex items-center gap-x-3">
+                            <div class="px-3.5 py-1 rounded-2xl w-fit bg-emerald-600 text-white text-xs font-bold">WEEKS 3–4</div>
+                            <div class="text-xs text-zinc-400 font-mono">17 JUL – 30 JUL</div>
+                        </div>
+                        <div class="mt-2 font-semibold text-xl">Web Exploitation</div>
+                    </div>
+                    <div class="flex-1 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Tasks</div>
+                                <ul class="space-y-1 text-zinc-300">
+                                    <li>• Complete labs on <strong>PortSwigger Web Security Academy</strong></li>
+                                    <li>• Solve Web challenges on PicoCTF</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Goal</div>
+                                <p class="text-zinc-300">Master common web vulnerabilities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 5 -->
+            <div class="roadmap-card bg-zinc-900 border border-zinc-700 rounded-3xl p-6">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-y-4">
+                    <div class="lg:w-56 flex-shrink-0">
+                        <div class="flex items-center gap-x-3">
+                            <div class="px-3.5 py-1 rounded-2xl w-fit bg-emerald-600 text-white text-xs font-bold">WEEK 5</div>
+                            <div class="text-xs text-zinc-400 font-mono">31 JUL – 6 AUG</div>
+                        </div>
+                        <div class="mt-2 font-semibold text-xl">Cryptography + Hacker Class</div>
+                    </div>
+                    <div class="flex-1 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Tasks</div>
+                                <ul class="space-y-1 text-zinc-300">
+                                    <li>• Complete <strong>CryptoHack</strong> Beginner path</li>
+                                    <li>• Attend free <strong>Hacker Class</strong></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Goal</div>
+                                <p class="text-zinc-300">Understand encoding, hashing, and basic encryption.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 6 -->
+            <div class="roadmap-card bg-zinc-900 border border-zinc-700 rounded-3xl p-6">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-y-4">
+                    <div class="lg:w-56 flex-shrink-0">
+                        <div class="flex items-center gap-x-3">
+                            <div class="px-3.5 py-1 rounded-2xl w-fit bg-emerald-600 text-white text-xs font-bold">WEEK 6</div>
+                            <div class="text-xs text-zinc-400 font-mono">7 – 13 AUG</div>
+                        </div>
+                        <div class="mt-2 font-semibold text-xl">Forensics &amp; Steganography</div>
+                    </div>
+                    <div class="flex-1 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Tasks</div>
+                                <ul class="space-y-1 text-zinc-300">
+                                    <li>• Solve Forensics challenges on PicoCTF</li>
+                                    <li>• Attend Live Hacker Class (9 Aug)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Goal</div>
+                                <p class="text-zinc-300">Extract hidden data from files and images.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 7 -->
+            <div class="roadmap-card bg-zinc-900 border border-zinc-700 rounded-3xl p-6">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-y-4">
+                    <div class="lg:w-56 flex-shrink-0">
+                        <div class="flex items-center gap-x-3">
+                            <div class="px-3.5 py-1 rounded-2xl w-fit bg-emerald-600 text-white text-xs font-bold">WEEK 7</div>
+                            <div class="text-xs text-zinc-400 font-mono">14 – 20 AUG</div>
+                        </div>
+                        <div class="mt-2 font-semibold text-xl">Reverse Engineering &amp; Binary</div>
+                    </div>
+                    <div class="flex-1 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Tasks</div>
+                                <ul class="space-y-1 text-zinc-300">
+                                    <li>• Start <strong>pwn.college</strong> baby modules</li>
+                                    <li>• Attend Live Hacker Class (16 Aug)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Goal</div>
+                                <p class="text-zinc-300">Decompile simple binaries and find flags.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 8 -->
+            <div class="roadmap-card bg-zinc-900 border border-pink-500/30 rounded-3xl p-6">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-y-4">
+                    <div class="lg:w-56 flex-shrink-0">
+                        <div class="flex items-center gap-x-3">
+                            <div class="px-3.5 py-1 rounded-2xl w-fit bg-pink-600 text-white text-xs font-bold">FINAL WEEK</div>
+                            <div class="text-xs text-zinc-400 font-mono">21 – 29 AUG</div>
+                        </div>
+                        <div class="mt-2 font-semibold text-xl">Full Practice &amp; CTF Simulation</div>
+                    </div>
+                    <div class="flex-1 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Tasks</div>
+                                <ul class="space-y-1 text-zinc-300">
+                                    <li>• Solve full CTF sets on PicoCTF</li>
+                                    <li>• Practice on CTFlearn.com</li>
+                                    <li>• Team practice + rest on 28 Aug</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="font-medium text-emerald-300 mb-1">Goal</div>
+                                <p class="text-zinc-300">Be fully prepared for the Preliminary Round.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESOURCES SECTION -->
+    <div id="resources" class="max-w-screen-xl mx-auto px-6 py-10 border-t border-zinc-800">
+        <div class="mb-8">
+            <span class="text-xs font-semibold tracking-widest text-emerald-400">100% FREE FOREVER</span>
+            <h2 class="section-header">Resources &amp; Platforms</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="resource-card bg-zinc-900 border border-zinc-700 hover:border-emerald-500 rounded-2xl p-5">
+                <div class="flex items-start gap-x-3">
+                    <i class="fa-solid fa-gamepad text-3xl text-emerald-400 mt-0.5"></i>
+                    <div>
+                        <div class="font-semibold">PicoCTF / CyLab Academy</div>
+                        <div class="text-xs text-emerald-400 mb-1">Best beginner CTF platform</div>
+                        <a href="https://picoctf.org/" target="_blank" class="text-xs text-emerald-400 hover:underline">picoctf.org →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-card bg-zinc-900 border border-zinc-700 hover:border-emerald-500 rounded-2xl p-5">
+                <div class="flex items-start gap-x-3">
+                    <i class="fa-solid fa-terminal text-3xl text-amber-400 mt-0.5"></i>
+                    <div>
+                        <div class="font-semibold">OverTheWire Wargames</div>
+                        <div class="text-xs text-emerald-400 mb-1">Linux mastery (start with Bandit)</div>
+                        <a href="https://overthewire.org/wargames/" target="_blank" class="text-xs text-emerald-400 hover:underline">overthewire.org →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-card bg-zinc-900 border border-zinc-700 hover:border-emerald-500 rounded-2xl p-5">
+                <div class="flex items-start gap-x-3">
+                    <i class="fa-solid fa-globe text-3xl text-sky-400 mt-0.5"></i>
+                    <div>
+                        <div class="font-semibold">PortSwigger Web Academy</div>
+                        <div class="text-xs text-emerald-400 mb-1">Best web exploitation training</div>
+                        <a href="https://portswigger.net/web-security" target="_blank" class="text-xs text-emerald-400 hover:underline">portswigger.net →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-card bg-zinc-900 border border-zinc-700 hover:border-emerald-500 rounded-2xl p-5">
+                <div class="flex items-start gap-x-3">
+                    <i class="fa-solid fa-lock text-3xl text-rose-400 mt-0.5"></i>
+                    <div>
+                        <div class="font-semibold">CryptoHack</div>
+                        <div class="text-xs text-emerald-400 mb-1">Progressive cryptography challenges</div>
+                        <a href="https://cryptohack.org/" target="_blank" class="text-xs text-emerald-400 hover:underline">cryptohack.org →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-card bg-zinc-900 border border-zinc-700 hover:border-emerald-500 rounded-2xl p-5">
+                <div class="flex items-start gap-x-3">
+                    <i class="fa-solid fa-microchip text-3xl text-orange-400 mt-0.5"></i>
+                    <div>
+                        <div class="font-semibold">pwn.college</div>
+                        <div class="text-xs text-emerald-400 mb-1">Binary exploitation &amp; reverse engineering</div>
+                        <a href="https://pwn.college/" target="_blank" class="text-xs text-emerald-400 hover:underline">pwn.college →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-card bg-zinc-900 border border-zinc-700 hover:border-emerald-500 rounded-2xl p-5">
+                <div class="flex items-start gap-x-3">
+                    <i class="fa-solid fa-graduation-cap text-3xl text-teal-400 mt-0.5"></i>
+                    <div>
+                        <div class="font-semibold">CTFlearn</div>
+                        <div class="text-xs text-emerald-400 mb-1">Extra CTF practice challenges</div>
+                        <a href="https://ctflearn.com/" target="_blank" class="text-xs text-emerald-400 hover:underline">ctflearn.com →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKLISTS SECTION (SUPABASE) -->
+    <div id="checklists" class="max-w-screen-xl mx-auto px-6 py-10 border-t border-zinc-800">
+        <div class="mb-6">
+            <span class="text-xs font-semibold tracking-widest text-emerald-400">REAL-TIME • SUPABASE</span>
+            <h2 class="section-header">Interactive Checklists</h2>
+            <p class="text-zinc-400 text-sm mt-1">Progress is saved in Supabase and updates in real-time for both Ibas and Rezi.</p>
+        </div>
+
+        <!-- Supabase Setup Warning -->
+        <div id="supabase-warning" class="bg-yellow-900/30 border border-yellow-700 rounded-2xl p-5 mb-6">
+            <div class="flex items-start gap-x-3">
+                <i class="fa-solid fa-exclamation-triangle text-yellow-400 mt-1"></i>
+                <div class="text-sm">
+                    <div class="font-semibold text-yellow-300">Supabase belum dikonfigurasi</div>
+                    <div class="text-yellow-200 mt-1">Ganti <code>SUPABASE_URL</code> dan <code>SUPABASE_ANON_KEY</code> di dalam kode HTML ini dengan milik kamu.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex border-b border-zinc-700 mb-6 text-sm">
+            <button onclick="switchChecklistTab(0)" id="check-tab-0" class="nav-active px-5 py-3 font-medium">Shared Roadmap</button>
+            <button onclick="switchChecklistTab(1)" id="check-tab-1" class="px-5 py-3 font-medium text-zinc-400 hover:text-white">Ibas</button>
+            <button onclick="switchChecklistTab(2)" id="check-tab-2" class="px-5 py-3 font-medium text-zinc-400 hover:text-white">Rezi</button>
+        </div>
+
+        <!-- Shared -->
+        <div id="check-content-0">
+            <div class="flex justify-between items-center mb-3 px-1">
+                <div class="font-semibold">Shared Roadmap</div>
+                <div id="shared-count" class="text-xs bg-zinc-800 px-3 py-1 rounded-full"></div>
+            </div>
+            <div class="bg-zinc-900 border border-zinc-700 rounded-3xl p-2 mb-6" id="shared-list"></div>
+        </div>
+
+        <!-- Ibas -->
+        <div id="check-content-1" class="hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                    <div class="font-semibold mb-3 px-1">Ibas - Weekly Progress</div>
+                    <div class="bg-zinc-900 border border-zinc-700 rounded-3xl p-2" id="ibas-weekly-list"></div>
+                </div>
+                <div>
+                    <div class="font-semibold mb-3 px-1">Ibas - Personal Focus Areas</div>
+                    <div class="bg-zinc-900 border border-zinc-700 rounded-3xl p-2" id="ibas-focus-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rezi -->
+        <div id="check-content-2" class="hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                    <div class="font-semibold mb-3 px-1">Rezi - Weekly Progress</div>
+                    <div class="bg-zinc-900 border border-zinc-700 rounded-3xl p-2" id="rezi-weekly-list"></div>
+                </div>
+                <div>
+                    <div class="font-semibold mb-3 px-1">Rezi - Personal Focus Areas</div>
+                    <div class="bg-zinc-900 border border-zinc-700 rounded-3xl p-2" id="rezi-focus-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-t border-zinc-800 py-8 text-center text-xs text-zinc-500">
+        Made for Ibas &amp; Rezi • COMPFEST CTF 2026 • All resources are 100% free<br>
+        Checklist uses Supabase for real-time collaboration
+    </footer>
+
+    <script>
+        // ==================== SUPABASE CONFIG ====================
+        const SUPABASE_URL = 'https://obbrprwljqmktjvfqyfg.supabase.co'; 
+        const SUPABASE_ANON_KEY = 'sb_publishable_l2xjoNmCvYUCCW9ftaRXpw_inAU002e';
+
+        let supabaseClient = null;
+
+        // ==================== INITIAL DATA ====================
+        const initialTasks = [
+            // Shared
+            { category: "shared", task_id: "s1", task_text: "Complete OverTheWire Bandit levels 0–20" },
+            { category: "shared", task_id: "s2", task_text: "Explore easy challenges on PicoCTF" },
+            { category: "shared", task_id: "s3", task_text: "Attend official Introduction Session (11 July)" },
+            { category: "shared", task_id: "s4", task_text: "Learn basic Networking + nmap" },
+            { category: "shared", task_id: "s5", task_text: "Complete labs on PortSwigger Web Security Academy" },
+            { category: "shared", task_id: "s6", task_text: "Solve Web challenges on PicoCTF" },
+            { category: "shared", task_id: "s7", task_text: "Complete CryptoHack Beginner path" },
+            { category: "shared", task_id: "s8", task_text: "Attend Hacker Class (1–6 August)" },
+            { category: "shared", task_id: "s9", task_text: "Solve Forensics challenges on PicoCTF" },
+            { category: "shared", task_id: "s10", task_text: "Attend Live Hacker Class (9 August)" },
+            { category: "shared", task_id: "s11", task_text: "Start pwn.college baby modules" },
+            { category: "shared", task_id: "s12", task_text: "Attend Live Hacker Class (16 August)" },
+            { category: "shared", task_id: "s13", task_text: "Solve full CTF sets on PicoCTF" },
+            { category: "shared", task_id: "s14", task_text: "Practice on CTFlearn.com" },
+            { category: "shared", task_id: "s15", task_text: "Review everything + rest on 28 August" },
+
+            // Ibas Weekly
+            { category: "ibas_weekly", task_id: "iw1", task_text: "Week 1 completed" },
+            { category: "ibas_weekly", task_id: "iw2", task_text: "Week 2 completed" },
+            { category: "ibas_weekly", task_id: "iw3", task_text: "Week 3-4 completed" },
+            { category: "ibas_weekly", task_id: "iw4", task_text: "Week 5 completed" },
+            { category: "ibas_weekly", task_id: "iw5", task_text: "Week 6 completed" },
+            { category: "ibas_weekly", task_id: "iw6", task_text: "Week 7 completed" },
+            { category: "ibas_weekly", task_id: "iw7", task_text: "Week 8 completed" },
+
+            // Ibas Focus
+            { category: "ibas_focus", task_id: "if1", task_text: "Linux / Terminal is strong" },
+            { category: "ibas_focus", task_id: "if2", task_text: "Web Exploitation is understood" },
+            { category: "ibas_focus", task_id: "if3", task_text: "Cryptography is comfortable" },
+            { category: "ibas_focus", task_id: "if4", task_text: "Forensics is comfortable" },
+            { category: "ibas_focus", task_id: "if5", task_text: "Reverse Engineering basics understood" },
+
+            // Rezi Weekly
+            { category: "rezi_weekly", task_id: "rw1", task_text: "Week 1 completed" },
+            { category: "rezi_weekly", task_id: "rw2", task_text: "Week 2 completed" },
+            { category: "rezi_weekly", task_id: "rw3", task_text: "Week 3-4 completed" },
+            { category: "rezi_weekly", task_id: "rw4", task_text: "Week 5 completed" },
+            { category: "rezi_weekly", task_id: "rw5", task_text: "Week 6 completed" },
+            { category: "rezi_weekly", task_id: "rw6", task_text: "Week 7 completed" },
+            { category: "rezi_weekly", task_id: "rw7", task_text: "Week 8 completed" },
+
+            // Rezi Focus
+            { category: "rezi_focus", task_id: "rf1", task_text: "Linux / Terminal is strong" },
+            { category: "rezi_focus", task_id: "rf2", task_text: "Web Exploitation is understood" },
+            { category: "rezi_focus", task_id: "rf3", task_text: "Cryptography is comfortable" },
+            { category: "rezi_focus", task_id: "rf4", task_text: "Forensics is comfortable" },
+            { category: "rezi_focus", task_id: "rf5", task_text: "Reverse Engineering basics understood" },
+        ];
+
+        // ==================== SUPABASE ====================
+        async function initSupabase() {
+            if (!SUPABASE_URL || SUPABASE_URL.includes('YOUR_PROJECT_ID')) {
+                document.getElementById('supabase-warning').classList.remove('hidden');
+                return false;
+            }
+
+            try {
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+                // Subscribe to realtime changes
+                supabaseClient
+                    .channel('checklist-realtime')
+                    .on('postgres_changes', { event: '*', schema: 'public', table: 'checklist_progress' }, () => {
+                        loadAllChecklists();
+                    })
+                    .subscribe();
+
+                document.getElementById('supabase-warning').classList.add('hidden');
+                return true;
+            } catch (err) {
+                console.error(err);
+                document.getElementById('supabase-warning').classList.remove('hidden');
+                return false;
+            }
+        }
+
+        async function loadAllChecklists() {
+            if (!supabaseClient) return;
+
+            const { data, error } = await supabaseClient
+                .from('checklist_progress')
+                .select('*')
+                .order('task_id');
+
+            if (error) {
+                console.error(error);
+                return;
+            }
+
+            // Clear lists
+            ['shared-list', 'ibas-weekly-list', 'ibas-focus-list', 'rezi-weekly-list', 'rezi-focus-list'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.innerHTML = '';
+            });
+
+            // Group
+            const grouped = {
+                shared: data.filter(d => d.category === 'shared'),
+                ibas_weekly: data.filter(d => d.category === 'ibas_weekly'),
+                ibas_focus: data.filter(d => d.category === 'ibas_focus'),
+                rezi_weekly: data.filter(d => d.category === 'rezi_weekly'),
+                rezi_focus: data.filter(d => d.category === 'rezi_focus'),
+            };
+
+            renderChecklist('shared-list', grouped.shared);
+            renderChecklist('ibas-weekly-list', grouped.ibas_weekly);
+            renderChecklist('ibas-focus-list', grouped.ibas_focus);
+            renderChecklist('rezi-weekly-list', grouped.rezi_weekly);
+            renderChecklist('rezi-focus-list', grouped.rezi_focus);
+
+            // Update count
+            const done = grouped.shared.filter(i => i.completed).length;
+            const total = grouped.shared.length;
+            const countEl = document.getElementById('shared-count');
+            if (countEl) countEl.textContent = `${done}/${total} done`;
+        }
+
+        function renderChecklist(containerId, items) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = `checklist-item flex items-center gap-x-4 px-5 py-3.5 rounded-2xl ${item.completed ? 'opacity-60' : ''}`;
+
+                div.innerHTML = `
+                    <input type="checkbox" ${item.completed ? 'checked' : ''} 
+                           class="w-5 h-5 accent-emerald-500 cursor-pointer"
+                           onchange="toggleComplete('${item.id}', this.checked)">
+                    <div class="flex-1">
+                        <span class="${item.completed ? 'line-through text-zinc-500' : ''}">${item.task_text}</span>
+                    </div>
+                    ${item.updated_by ? `<div class="text-xs text-zinc-500">${item.updated_by}</div>` : ''}
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        async function toggleComplete(id, completed) {
+            if (!supabaseClient) return;
+
+            await supabaseClient
+                .from('checklist_progress')
+                .update({
+                    completed: completed,
+                    updated_by: 'Ibas', // Bisa diganti logic untuk deteksi user
+                    updated_at: new Date().toISOString()
+                })
+                .eq('id', id);
+        }
+
+        function switchChecklistTab(tab) {
+            document.getElementById('check-content-0').classList.add('hidden');
+            document.getElementById('check-content-1').classList.add('hidden');
+            document.getElementById('check-content-2').classList.add('hidden');
+
+            document.getElementById('check-content-' + tab).classList.remove('hidden');
+
+            for (let i = 0; i < 3; i++) {
+                const t = document.getElementById('check-tab-' + i);
+                if (i === tab) {
+                    t.classList.add('nav-active');
+                    t.classList.remove('text-zinc-400');
+                } else {
+                    t.classList.remove('nav-active');
+                    t.classList.add('text-zinc-400');
+                }
+            }
+        }
+
+        // ==================== INIT ====================
+        async function initialize() {
+            const connected = await initSupabase();
+            if (connected) {
+                await loadAllChecklists();
+            }
+        }
+
+        window.onload = initialize;
+    </script>
+</body>
+</html>
