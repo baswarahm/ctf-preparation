@@ -1,1362 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ULTIMATE 50-Day Beginner-to-Intermediate CTF Preparation Roadmap - Free, Hands-On, Cyberpunk Themed. From Zero to CTF Ready in 50 Days. Includes daily plans, cheat sheets, resources, and interactive progress tracker.">
-    <meta name="keywords" content="CTF roadmap, beginner CTF, free cybersecurity training, PicoCTF, TryHackMe, PortSwigger, CryptoHack, OverTheWire, 50 day CTF prep, ethical hacking roadmap">
-    <title>🚀 50-Day CTF Mastery Roadmap | Elite Beginner Prep 2026</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400;700&amp;family=VT323&amp;display=swap');
-        
-        :root {
-            --bg: #0a0a0f;
-            --glass: rgba(15, 15, 25, 0.85);
-            --glass-border: rgba(0, 249, 255, 0.2);
-            --neon-cyan: #00f9ff;
-            --neon-pink: #ff00aa;
-            --neon-green: #00ff9f;
-            --neon-purple: #9d4edd;
-            --text: #e0e0ff;
-            --text-dim: #a0a0c0;
-            --accent: #00f9ff;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Share Tech Mono', 'VT323', monospace;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Cyberpunk Glassmorphism */
-        .glass {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-                        inset 0 0 0 1px rgba(255,255,255,0.05);
-        }
-        
-        .neon-text {
-            text-shadow: 0 0 5px var(--neon-cyan),
-                         0 0 10px var(--neon-cyan),
-                         0 0 20px var(--neon-cyan);
-        }
-        
-        .neon-pink {
-            text-shadow: 0 0 5px var(--neon-pink),
-                         0 0 10px var(--neon-pink);
-        }
-        
-        .neon-green {
-            text-shadow: 0 0 5px var(--neon-green),
-                         0 0 10px var(--neon-green);
-        }
-        
-        h1, h2, h3 {
-            font-family: 'VT323', monospace;
-            letter-spacing: 2px;
-        }
-        
-        h1 { font-size: 3.5rem; }
-        h2 { font-size: 2.2rem; border-bottom: 2px solid var(--neon-cyan); padding-bottom: 10px; margin-bottom: 20px; }
-        h3 { font-size: 1.6rem; color: var(--neon-cyan); }
-        
-        a {
-            color: var(--neon-cyan);
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        
-        a:hover {
-            color: var(--neon-pink);
-            text-shadow: 0 0 8px var(--neon-pink);
-        }
-        
-        .section {
-            padding: 60px 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Sticky Header & Progress */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(10,10,15,0.95);
-            border-bottom: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-        }
-        
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .progress-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            min-width: 280px;
-        }
-        
-        .progress-bar {
-            flex: 1;
-            height: 12px;
-            background: #1a1a25;
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
-            width: 0%;
-            transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 0 15px var(--neon-cyan);
-        }
-        
-        .progress-text {
-            font-size: 1.1rem;
-            font-weight: bold;
-            min-width: 120px;
-            text-align: right;
-        }
-        
-        /* Sidebar Navigation */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 70px;
-            width: 260px;
-            height: calc(100vh - 70px);
-            background: var(--glass);
-            border-right: 1px solid var(--glass-border);
-            padding: 20px;
-            overflow-y: auto;
-            z-index: 999;
-            transition: transform 0.3s;
-        }
-        
-        .sidebar.collapsed {
-            transform: translateX(-100%);
-        }
-        
-        .nav-link {
-            display: block;
-            padding: 12px 18px;
-            margin: 4px 0;
-            border-radius: 6px;
-            color: var(--text);
-            font-size: 1rem;
-            transition: all 0.2s;
-            border-left: 3px solid transparent;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            background: rgba(0, 249, 255, 0.1);
-            border-left-color: var(--neon-cyan);
-            color: var(--neon-cyan);
-            text-shadow: 0 0 8px var(--neon-cyan);
-        }
-        
-        .nav-section {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--neon-pink);
-            margin: 20px 0 8px;
-            padding-left: 18px;
-        }
-        
-        /* Main Content */
-        main {
-            margin-left: 260px;
-            padding-top: 20px;
-        }
-        
-        @media (max-width: 900px) {
-            .sidebar { transform: translateX(-100%); }
-            main { margin-left: 0; }
-            .menu-toggle { display: block !important; }
-        }
-        
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: 1px solid var(--neon-cyan);
-            color: var(--neon-cyan);
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        
-        /* Cards & Glass Elements */
-        .card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(0, 249, 255, 0.1);
-        }
-        
-        .day-card {
-            border-left: 5px solid var(--neon-cyan);
-        }
-        
-        .review-day {
-            border-left: 5px solid var(--neon-pink);
-        }
-        
-        .final-week {
-            border-left: 5px solid var(--neon-purple);
-        }
-        
-        /* Collapsible Details */
-        details {
-            margin-bottom: 12px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-        }
-        
-        summary {
-            padding: 16px 20px;
-            background: rgba(0, 249, 255, 0.08);
-            cursor: pointer;
-            font-weight: bold;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: background 0.2s;
-        }
-        
-        summary:hover {
-            background: rgba(0, 249, 255, 0.15);
-        }
-        
-        summary::after {
-            content: '▼';
-            transition: transform 0.3s;
-        }
-        
-        details[open] summary::after {
-            transform: rotate(180deg);
-        }
-        
-        details[open] summary {
-            background: rgba(0, 249, 255, 0.12);
-        }
-        
-        .day-content {
-            padding: 20px;
-            background: rgba(10,10,15,0.6);
-        }
-        
-        /* Checkboxes & Progress */
-        .checklist {
-            list-style: none;
-        }
-        
-        .checklist li {
-            padding: 8px 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .checklist input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--neon-cyan);
-            cursor: pointer;
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-        
-        .checklist label {
-            cursor: pointer;
-            flex: 1;
-        }
-        
-        .checklist input:checked + label {
-            text-decoration: line-through;
-            opacity: 0.7;
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            max-width: 100%;
-            margin: 40px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(var(--neon-cyan), var(--neon-pink));
-            transform: translateX(-50%);
-        }
-        
-        .timeline-item {
-            position: relative;
-            width: 50%;
-            padding: 20px 40px;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item:nth-child(odd) { left: 0; text-align: right; }
-        .timeline-item:nth-child(even) { left: 50%; }
-        
-        .timeline-dot {
-            position: absolute;
-            top: 30px;
-            width: 24px;
-            height: 24px;
-            background: var(--bg);
-            border: 3px solid var(--neon-cyan);
-            border-radius: 50%;
-            z-index: 2;
-            box-shadow: 0 0 15px var(--neon-cyan);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-dot { right: -12px; }
-        .timeline-item:nth-child(even) .timeline-dot { left: -12px; }
-        
-        /* Search */
-        .search-box {
-            position: relative;
-            max-width: 400px;
-            margin: 20px auto;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 14px 20px 14px 50px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            color: var(--text);
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(0,249,255,0.3);
-        }
-        
-        .search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--neon-cyan);
-        }
-        
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: var(--glass);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        th, td {
-            padding: 14px 18px;
-            text-align: left;
-            border-bottom: 1px solid var(--glass-border);
-        }
-        
-        th {
-            background: rgba(0, 249, 255, 0.1);
-            color: var(--neon-cyan);
-            font-weight: bold;
-        }
-        
-        tr:hover {
-            background: rgba(0, 249, 255, 0.05);
-        }
-        
-        /* Code blocks */
-        pre, code {
-            font-family: 'Share Tech Mono', monospace;
-            background: #111118;
-            padding: 2px 8px;
-            border-radius: 4px;
-            border: 1px solid #222233;
-        }
-        
-        pre {
-            padding: 16px;
-            overflow-x: auto;
-            margin: 15px 0;
-        }
-        
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: transparent;
-            color: var(--neon-cyan);
-            border: 2px solid var(--neon-cyan);
-            border-radius: 6px;
-            font-family: inherit;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            font-size: 0.95rem;
-        }
-        
-        .btn:hover {
-            background: var(--neon-cyan);
-            color: #0a0a0f;
-            box-shadow: 0 0 20px var(--neon-cyan);
-            transform: translateY(-2px);
-        }
-        
-        .btn-pink {
-            border-color: var(--neon-pink);
-            color: var(--neon-pink);
-        }
-        
-        .btn-pink:hover {
-            background: var(--neon-pink);
-            color: #fff;
-        }
-        
-        /* Skill Tree */
-        .skill-tree ul {
-            list-style: none;
-            padding-left: 30px;
-        }
-        
-        .skill-tree li {
-            position: relative;
-            padding: 6px 0 6px 25px;
-        }
-        
-        .skill-tree li::before {
-            content: '▶';
-            position: absolute;
-            left: 0;
-            color: var(--neon-cyan);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .timeline::before { left: 20px; }
-            .timeline-item { width: 100%; left: 0 !important; padding-left: 60px; text-align: left !important; }
-            .timeline-item:nth-child(even) { left: 0; }
-            .timeline-dot { left: 8px !important; right: auto !important; }
-        }
-        
-        /* Print Styles */
-        @media print {
-            .sidebar, header, .search-box, .progress-container, .menu-toggle { display: none !important; }
-            main { margin-left: 0; }
-            .glass, .card { box-shadow: none; border: 1px solid #333; background: white; color: black; }
-            body { background: white; color: black; }
-            .neon-text, .neon-pink, .neon-green { text-shadow: none; color: black; }
-        }
-        
-        .callout {
-            padding: 18px 22px;
-            border-left: 5px solid var(--neon-pink);
-            background: rgba(255, 0, 170, 0.08);
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .stat {
-            display: inline-block;
-            background: rgba(0,249,255,0.1);
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-right: 8px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50-Day CTF Roadmap — Zero to Competition Ready</title>
+<meta name="description" content="A complete 50-day, free-resources-only roadmap taking a beginner from zero to CTF-competition-ready across Linux, Networking, Web, Crypto, Reverse Engineering, Forensics and Misc/OSINT.">
+<style>
+:root{
+  --bg:#080b10;
+  --panel:#0e131b;
+  --panel-glass:rgba(16,22,32,0.65);
+  --border:rgba(57,255,150,0.18);
+  --text:#c9d6e3;
+  --text-dim:#7c8a9c;
+  --neon-green:#39ff9d;
+  --neon-cyan:#38e8ff;
+  --neon-amber:#ffb454;
+  --neon-magenta:#ff5fb0;
+  --radius:14px;
+  --mono: 'JetBrains Mono','Fira Code',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans: 'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:
+    radial-gradient(ellipse at 20% -10%, rgba(56,232,255,0.10), transparent 45%),
+    radial-gradient(ellipse at 90% 10%, rgba(255,95,176,0.08), transparent 40%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+::selection{background:var(--neon-green);color:#04140c;}
+a{color:var(--neon-cyan);}
+
+/* Reading progress bar */
+#readbar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--neon-green),var(--neon-cyan));width:0%;z-index:1000;transition:width .1s linear;box-shadow:0 0 8px var(--neon-cyan);}
+
+/* Layout */
+.app{display:grid;grid-template-columns:280px 1fr;min-height:100vh;}
+@media (max-width:900px){.app{grid-template-columns:1fr;}#sidebar{position:fixed;left:0;top:0;bottom:0;width:280px;transform:translateX(-100%);transition:transform .25s ease;z-index:900;}#sidebar.open{transform:translateX(0);}}
+
+#sidebar{
+  background:var(--panel);
+  border-right:1px solid var(--border);
+  padding:20px 16px;
+  overflow-y:auto;
+  height:100vh;
+  position:sticky;
+  top:0;
+}
+.brand{font-family:var(--mono);font-weight:700;font-size:1.05rem;color:var(--neon-green);letter-spacing:.5px;margin-bottom:4px;}
+.brand small{display:block;color:var(--text-dim);font-weight:400;font-size:.72rem;margin-top:4px;}
+
+#search{
+  width:100%;margin:16px 0;padding:10px 12px;border-radius:10px;
+  background:#050708;border:1px solid var(--border);color:var(--text);
+  font-family:var(--mono);font-size:.85rem;
+}
+#search:focus{outline:none;border-color:var(--neon-cyan);box-shadow:0 0 0 3px rgba(56,232,255,0.12);}
+
+.navgroup{margin-bottom:6px;}
+.navlink{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 10px;border-radius:8px;color:var(--text-dim);
+  text-decoration:none;font-size:.85rem;cursor:pointer;
+  border-left:2px solid transparent;
+}
+.navlink:hover{background:rgba(57,255,157,0.06);color:var(--text);}
+.navlink.active{color:var(--neon-green);border-left-color:var(--neon-green);background:rgba(57,255,157,0.08);}
+.navlink .pct{font-family:var(--mono);font-size:.7rem;color:var(--text-dim);}
+
+.sidebar-footer{margin-top:24px;padding-top:16px;border-top:1px solid var(--border);}
+.progress-overall{font-family:var(--mono);font-size:.75rem;color:var(--text-dim);margin-bottom:6px;}
+.bar{height:8px;border-radius:6px;background:#050708;border:1px solid var(--border);overflow:hidden;}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--neon-green),var(--neon-cyan));width:0%;transition:width .3s ease;}
+.io-buttons{display:flex;gap:6px;margin-top:10px;}
+.io-buttons button{flex:1;font-size:.68rem;padding:6px;border-radius:6px;border:1px solid var(--border);background:#050708;color:var(--text-dim);cursor:pointer;font-family:var(--mono);}
+.io-buttons button:hover{color:var(--neon-green);border-color:var(--neon-green);}
+
+/* Menu toggle for mobile */
+#menuToggle{display:none;position:fixed;top:14px;left:14px;z-index:950;background:var(--panel);border:1px solid var(--border);color:var(--neon-green);border-radius:8px;width:40px;height:40px;font-family:var(--mono);cursor:pointer;}
+@media (max-width:900px){#menuToggle{display:block;}}
+
+main{padding:40px 48px 120px;max-width:980px;}
+@media (max-width:900px){main{padding:70px 20px 100px;}}
+
+header.hero{
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:32px;margin-bottom:36px;position:relative;overflow:hidden;
+  background:var(--panel-glass);backdrop-filter:blur(10px);
+}
+header.hero::before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,rgba(57,255,157,0.035) 0px,rgba(57,255,157,0.035) 1px,transparent 1px,transparent 3px);
+  pointer-events:none;
+}
+.eyebrow{font-family:var(--mono);color:var(--neon-amber);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;}
+h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:.4em 0 .3em;color:#eaf6ff;line-height:1.15;}
+h1 .accent{color:var(--neon-green);text-shadow:0 0 18px rgba(57,255,157,0.5);}
+.subtitle{color:var(--text-dim);font-size:1rem;max-width:60ch;}
+.stat-row{display:flex;gap:24px;margin-top:22px;flex-wrap:wrap;}
+.stat{font-family:var(--mono);}
+.stat .num{font-size:1.5rem;color:var(--neon-cyan);}
+.stat .lbl{font-size:.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;}
+
+section{margin-bottom:44px;scroll-margin-top:24px;}
+h2{font-family:var(--mono);font-size:1.3rem;color:var(--neon-green);border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:18px;letter-spacing:.5px;}
+h2 .idx{color:var(--neon-magenta);margin-right:8px;}
+h3{color:#eaf6ff;font-size:1.05rem;margin-top:26px;}
+
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.85rem;}
+th,td{padding:9px 10px;border:1px solid var(--border);text-align:left;vertical-align:top;}
+th{background:rgba(57,255,157,0.06);color:var(--neon-green);font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;}
+tr:hover td{background:rgba(56,232,255,0.04);}
+code{background:#050708;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-family:var(--mono);color:var(--neon-cyan);font-size:.85em;}
+pre{background:#050708;border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:.82rem;color:var(--neon-green);}
+blockquote{border-left:3px solid var(--neon-amber);margin:14px 0;padding:8px 16px;background:rgba(255,180,84,0.06);color:var(--text-dim);border-radius:0 8px 8px 0;}
+
+/* Day card (collapsible) */
+.day-card{border:1px solid var(--border);border-radius:10px;margin-bottom:10px;background:var(--panel-glass);overflow:hidden;}
+.day-head{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;user-select:none;}
+.day-head:hover{background:rgba(57,255,157,0.05);}
+.day-head .badge{font-family:var(--mono);color:#04140c;background:var(--neon-green);border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:700;white-space:nowrap;}
+.day-head .badge.review{background:var(--neon-amber);}
+.day-head .title{flex:1;font-weight:600;color:#eaf6ff;font-size:.92rem;}
+.day-head .caret{color:var(--text-dim);transition:transform .2s;font-family:var(--mono);}
+.day-card.open .caret{transform:rotate(90deg);}
+.day-body{max-height:0;overflow:hidden;transition:max-height .25s ease;padding:0 16px;}
+.day-card.open .day-body{max-height:600px;padding:4px 16px 16px;}
+.day-body p{margin:6px 0;font-size:.87rem;}
+.day-body .meta{color:var(--text-dim);font-size:.8rem;}
+
+.checklist{list-style:none;padding:0;margin:10px 0;}
+.checklist li{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:.87rem;}
+.checklist input[type=checkbox]{margin-top:3px;accent-color:var(--neon-green);width:16px;height:16px;cursor:pointer;}
+.checklist label.done{color:var(--text-dim);text-decoration:line-through;}
+
+.week-progress{font-family:var(--mono);font-size:.75rem;color:var(--text-dim);margin:8px 0 16px;}
+
+footer{border-top:1px solid var(--border);margin-top:60px;padding-top:20px;color:var(--text-dim);font-size:.8rem;text-align:center;}
+
+@media print{
+  #sidebar,#menuToggle,#readbar,.io-buttons{display:none!important;}
+  .app{display:block;}
+  main{max-width:100%;padding:0;}
+  body{background:#fff;color:#111;}
+  .day-body{max-height:none!important;padding:8px 16px 16px!important;}
+  a{color:#111;text-decoration:underline;}
+}
+.hidden{display:none!important;}
+</style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="top-bar container">
-            <div class="logo">
-                <span style="color: var(--neon-cyan);">⚡</span> 
-                <span class="neon-text">CTF ELITE</span> 
-                <span style="font-size:1.2rem; color:var(--neon-pink);">50</span>
-            </div>
-            
-            <div class="progress-container">
-                <div>
-                    <div style="font-size:0.8rem; color:var(--text-dim);">OVERALL PROGRESS</div>
-                    <div id="progress-text" class="progress-text neon-green">0% • 0/420 tasks</div>
-                </div>
-                <div class="progress-bar">
-                    <div id="progress-fill" class="progress-fill" style="width: 0%;"></div>
-                </div>
-            </div>
-            
-            <button class="menu-toggle" onclick="toggleSidebar()">☰ MENU</button>
-        </div>
+<div id="readbar"></div>
+<button id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+<div class="app">
+  <nav id="sidebar" aria-label="Roadmap navigation">
+    <div class="brand">CTF//ROADMAP<small>50 days · Jul 10 → Aug 29</small></div>
+    <input id="search" type="search" placeholder="Search the roadmap…" aria-label="Search roadmap">
+    <div class="navgroup" id="navlinks"></div>
+    <div class="sidebar-footer">
+      <div class="progress-overall">OVERALL PROGRESS <span id="overallPct">0%</span></div>
+      <div class="bar"><div class="bar-fill" id="overallBar"></div></div>
+      <div class="io-buttons">
+        <button id="exportBtn" title="Save your checked progress to a file">Export</button>
+        <button id="importBtn" title="Load progress from a file">Import</button>
+        <button id="resetBtn" title="Clear all progress">Reset</button>
+      </div>
+      <input type="file" id="importFile" accept=".json" class="hidden">
+    </div>
+  </nav>
+
+  <main id="content">
+
+    <header class="hero">
+      <div class="eyebrow">Beginner → Competition Ready</div>
+      <h1>The <span class="accent">50-Day</span> CTF Roadmap</h1>
+      <p class="subtitle">Zero cybersecurity knowledge to confident CTF competitor. Free resources only, learn-by-doing, 6–10 hrs/day, July 10 → August 29.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="num">50</div><div class="lbl">Days</div></div>
+        <div class="stat"><div class="num">7</div><div class="lbl">Weeks</div></div>
+        <div class="stat"><div class="num">6</div><div class="lbl">Categories</div></div>
+        <div class="stat"><div class="num">$0</div><div class="lbl">Cost</div></div>
+      </div>
     </header>
 
-    <!-- SIDEBAR -->
-    <nav class="sidebar glass" id="sidebar">
-        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--glass-border);">
-            <div style="font-size:1.4rem; font-weight:bold;" class="neon-text">NAVIGATION</div>
-            <div style="font-size:0.8rem; color:var(--text-dim);">50 Days to CTF Ready</div>
-        </div>
-        
-        <a href="#intro" class="nav-link">1. Introduction</a>
-        <a href="#overview" class="nav-link">2. Roadmap Overview</a>
-        <a href="#skilltree" class="nav-link">3. Skill Tree</a>
-        <a href="#roadmap" class="nav-link">4. 50-Day Roadmap</a>
-        <a href="#weekly" class="nav-link">5. Weekly Reviews</a>
-        <a href="#finalweek" class="nav-link">6. Final Week Prep</a>
-        <a href="#resources" class="nav-link">7. Free Resources</a>
-        <a href="#certs" class="nav-link">8. Free Certificates &amp; Badges</a>
-        <a href="#writeups" class="nav-link">9. Write-up Learning Guide</a>
-        <a href="#cheatsheets" class="nav-link">10. Cheat Sheets</a>
-        <a href="#tools" class="nav-link">11. Tool Installation</a>
-        <a href="#toolkit" class="nav-link">12. Personal Toolkit</a>
-        <a href="#faq" class="nav-link">13. FAQ</a>
-        <a href="#glossary" class="nav-link">14. Glossary</a>
-        
-        <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid var(--glass-border); font-size:0.75rem; color:var(--text-dim);">
-            Built for absolute beginners • 6-10 hrs/day • 100% FREE
-        </div>
-    </nav>
+    <section id="sec-overview">
+      <h2><span class="idx">01</span>How This Roadmap Is Organized</h2>
+      <p>50 days is tight for "zero knowledge → confident competitor," so this plan is <strong>triage-based</strong>: it front-loads <strong>Web</strong> and <strong>Crypto</strong> (fastest points-per-hour for beginners), builds solid <strong>Linux/Networking</strong> fundamentals first since everything depends on them, treats <strong>Reverse Engineering</strong> and <strong>Forensics</strong> as "learn the easy 60%," and folds <strong>Misc/OSINT</strong> into the final stretch where pattern-recognition matters more than weeks of study.</p>
+      <table>
+        <tr><th>Week</th><th>Days</th><th>Phase</th></tr>
+        <tr><td>1</td><td>1–7</td><td>Linux & CLI Fundamentals</td></tr>
+        <tr><td>2</td><td>8–14</td><td>Networking</td></tr>
+        <tr><td>3</td><td>15–21</td><td>Web Exploitation I — HTTP, Burp, SQLi, XSS</td></tr>
+        <tr><td>4</td><td>22–28</td><td>Web Exploitation II — CSRF, SSTI, JWT, IDOR, Upload, LFI</td></tr>
+        <tr><td>5</td><td>29–35</td><td>Cryptography</td></tr>
+        <tr><td>6</td><td>36–42</td><td>Reverse Engineering + Forensics</td></tr>
+        <tr><td>7</td><td>43–49</td><td>Misc / OSINT / Scripting + Timed Practice</td></tr>
+        <tr><td>—</td><td>50</td><td>Full Mock Competition + Final Review</td></tr>
+      </table>
+      <blockquote>Every 7th day (7, 14, 21, 28, 35, 42, 49) is a <strong>Review Day</strong> — no new material, only timed practice, weak-spot drilling, and self-scoring.</blockquote>
+      <pre>08:00–09:30  Theory / concept video
+09:30–11:00  Guided lab (follow-along)
+11:00–12:00  Independent challenge
+--- lunch ---
+13:00–15:00  Practical build / deeper lab
+15:00–17:00  CTF challenge solving
+17:00–18:00  Notes + write-up</pre>
+    </section>
 
-    <main>
-        <!-- INTRODUCTION -->
-        <section id="intro" class="section container">
-            <div class="card glass">
-                <h1 class="neon-text" style="margin-bottom:10px;">THE ULTIMATE 50-DAY CTF PREP ROADMAP</h1>
-                <p style="font-size:1.3rem; color:var(--neon-pink); margin-bottom:25px;">From Absolute Zero to Beginner/Intermediate CTF Competitor</p>
-                
-                <div class="callout">
-                    <strong>YOUR MISSION:</strong> Maximize your score in beginner and intermediate Capture The Flag competitions. 
-                    You have ~50 days (July 10 – August 28/29). Study 6–10 hours daily with heavy emphasis on <strong>learning by doing</strong>.
-                </div>
-                
-                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:15px; margin:30px 0;">
-                    <div class="stat">📅 50 Days</div>
-                    <div class="stat">⏱️ 6-10 hrs/day</div>
-                    <div class="stat">🆓 100% FREE</div>
-                    <div class="stat">🎯 Hands-on Focus</div>
-                    <div class="stat">🧠 Zero to CTF Ready</div>
-                </div>
-                
-                <p>This roadmap is engineered by an elite CTF coach for absolute beginners. Every day builds directly on the previous. 
-                You will master Linux, Networking, Web Exploitation (OWASP Top 10), Cryptography, Reverse Engineering, Forensics, 
-                OSINT, and Python scripting for CTF — all through practical labs and real challenges from PicoCTF, TryHackMe, 
-                PortSwigger, OverTheWire, and CryptoHack.</p>
-                
-                <p style="margin-top:15px;"><strong>By Day 50 you will confidently hunt flags across multiple categories and compete effectively.</strong></p>
-                
-                <div style="margin-top:25px;">
-                    <a href="#roadmap" class="btn">START DAY 1 →</a>
-                    <a href="#overview" class="btn btn-pink" style="margin-left:12px;">VIEW FULL OVERVIEW</a>
-                </div>
-            </div>
-        </section>
+    <section id="sec-weeks">
+      <h2><span class="idx">02</span>The 50-Day Roadmap</h2>
+      <div id="weeksContainer"></div>
+    </section>
 
-        <!-- OVERVIEW -->
-        <section id="overview" class="section container">
-            <h2>📍 OVERALL ROADMAP OVERVIEW</h2>
-            
-            <div class="timeline">
-                <!-- Phase 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="card glass" style="border-left:5px solid #00f9ff;">
-                        <h3 style="color:#00f9ff;">PHASE 1: FOUNDATIONS</h3>
-                        <p><strong>Days 1–10</strong> • ~70 hours</p>
-                        <p>Computer fundamentals, Linux mastery (OverTheWire Bandit), Bash, filesystem, permissions, SSH, basic networking (OSI, TCP/IP, Wireshark, tcpdump), terminal workflow.</p>
-                        <div style="margin-top:10px;"><span class="stat">Core: Linux + Networking</span></div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="card glass" style="border-left:5px solid #ff00aa;">
-                        <h3 style="color:#ff00aa;">PHASE 2: WEB EXPLOITATION</h3>
-                        <p><strong>Days 11–20</strong> • ~75 hours</p>
-                        <p>HTTP deep dive, Burp Suite Community, OWASP Top 10: SQLi, XSS, CSRF, Command Injection, File Inclusion, IDOR, JWT, File Uploads. Labs on PortSwigger + Juice Shop + DVWA + PicoCTF Web.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="card glass" style="border-left:5px solid #00ff9f;">
-                        <h3 style="color:#00ff9f;">PHASE 3: CRYPTOGRAPHY</h3>
-                        <p><strong>Days 21–28</strong> • ~55 hours</p>
-                        <p>Encodings (Base64, Hex, ROT13), classical ciphers, XOR, hashing (MD5/SHA), symmetric (AES concepts), RSA basics, frequency analysis, common CTF tricks. Heavy CryptoHack + PicoCTF.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="card glass" style="border-left:5px solid #9d4edd;">
-                        <h3 style="color:#9d4edd;">PHASE 4: REVERSE ENGINEERING</h3>
-                        <p><strong>Days 29–35</strong> • ~50 hours</p>
-                        <p>Assembly basics (x86), ELF/PE, strings, Ghidra (free), GDB, objdump, binary analysis. Easy crackmes + PicoCTF Reverse challenges.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="card glass" style="border-left:5px solid #00f9ff;">
-                        <h3 style="color:#00f9ff;">PHASE 5: FORENSICS + MISC</h3>
-                        <p><strong>Days 36–43</strong> • ~55 hours</p>
-                        <p>File signatures, metadata (ExifTool), steganography, binwalk, Volatility intro, packet analysis. OSINT basics, password cracking (John/Hashcat), Python for CTF, pwntools intro, QR/encoding tricks.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="card glass final-week" style="border-left:5px solid #ff00aa;">
-                        <h3 style="color:#ff00aa;">FINAL WEEK + REVIEWS</h3>
-                        <p><strong>Days 44–50</strong> • Simulation mode</p>
-                        <p>Full CTF simulations, timed challenges from PicoCTF archives &amp; TryHackMe, weakness targeting, note review, flag hunting strategy, time management, team tips (even solo).</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card glass" style="text-align:center; margin-top:30px;">
-                <p><strong>Every 7th day (Day 7, 14, 21, 28, 35, 42, 49)</strong> is a dedicated REVIEW + PRACTICE day with timed challenges, weakness analysis, and progress scoring.</p>
-            </div>
-        </section>
+    <section id="sec-day50">
+      <h2><span class="idx">03</span>Day 50 — Full Mock Competition</h2>
+      <table>
+        <tr><th>Time</th><th>Activity</th></tr>
+        <tr><td>08:00–12:00</td><td>Full timed mock CTF on a fresh event/challenge set — treat it exactly like competition day</td></tr>
+        <tr><td>12:00–13:00</td><td>Break</td></tr>
+        <tr><td>13:00–14:30</td><td>Review every unsolved challenge via write-ups; note the gap</td></tr>
+        <tr><td>14:30–16:00</td><td>Toolkit check: Burp, Ghidra, GDB, Wireshark, CyberChef, scripts all working</td></tr>
+        <tr><td>16:00–17:00</td><td>Finalize flag-hunting checklist and note-taking workflow</td></tr>
+        <tr><td>17:00–18:00</td><td>Rest — you're ready</td></tr>
+      </table>
+    </section>
 
-        <!-- SKILL TREE -->
-        <section id="skilltree" class="section container">
-            <h2>🌳 SKILL TREE — PROGRESSIVE MASTERY</h2>
-            <div class="card glass skill-tree">
-                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-                    <div>
-                        <h3 class="neon-text">PHASE 1 • FOUNDATIONS</h3>
-                        <ul>
-                            <li>Computer Architecture Basics</li>
-                            <li>Linux Installation &amp; Navigation</li>
-                            <li>Bash Scripting &amp; One-liners</li>
-                            <li>Filesystem Hierarchy (FHS)</li>
-                            <li>Permissions, Users, Groups</li>
-                            <li>SSH + Key Management</li>
-                            <li>Vim / Nano Proficiency</li>
-                            <li>Package Management (apt, yum)</li>
-                            <li>Networking Fundamentals</li>
-                            <li>OSI Model &amp; TCP/IP Stack</li>
-                            <li>Ports, Services, DNS, HTTP/S</li>
-                            <li>Wireshark + tcpdump Mastery</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 style="color:#ff00aa;">PHASE 2 • WEB EXPLOITATION</h3>
-                        <ul>
-                            <li>HTTP Requests &amp; Responses</li>
-                            <li>Cookies, Sessions, AuthN/Z</li>
-                            <li>Burp Suite Community Edition</li>
-                            <li>SQL Injection ( UNION, Blind, Time-based)</li>
-                            <li>Cross-Site Scripting (XSS)</li>
-                            <li>CSRF + SameSite Bypass</li>
-                            <li>Command Injection</li>
-                            <li>Local/Remote File Inclusion (LFI/RFI)</li>
-                            <li>Directory Traversal</li>
-                            <li>Server-Side Template Injection (SSTI)</li>
-                            <li>JWT Attacks</li>
-                            <li>IDOR (Insecure Direct Object Ref)</li>
-                            <li>Insecure File Uploads</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 style="color:#00ff9f;">PHASE 3 • CRYPTO</h3>
-                        <ul>
-                            <li>Encoding: Base64, Hex, URL, ROT13</li>
-                            <li>Classical Ciphers (Caesar, Vigenère)</li>
-                            <li>XOR &amp; Multi-byte XOR</li>
-                            <li>Hashing (MD5, SHA1/256/512)</li>
-                            <li>Hash Cracking Strategies</li>
-                            <li>Symmetric Crypto (AES modes)</li>
-                            <li>RSA Basics &amp; Common Attacks</li>
-                            <li>Frequency Analysis</li>
-                            <li>Padding Oracles &amp; CTF Tricks</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 style="color:#9d4edd;">PHASE 4-5 • RE + FORENSICS</h3>
-                        <ul>
-                            <li>x86 Assembly Fundamentals</li>
-                            <li>ELF Binary Anatomy</li>
-                            <li>Ghidra + GDB + objdump</li>
-                            <li>String Extraction &amp; Analysis</li>
-                            <li>File Signatures &amp; Magic Bytes</li>
-                            <li>Metadata &amp; EXIF Forensics</li>
-                            <li>Steganography (image/audio)</li>
-                            <li>Binwalk + foremost</li>
-                            <li>Volatility Memory Forensics</li>
-                            <li>Packet Analysis (Wireshark)</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 style="color:#ff00aa;">PHASE 6 • MISC &amp; SCRIPTING</h3>
-                        <ul>
-                            <li>OSINT Methodologies</li>
-                            <li>QR Code &amp; Encoding Challenges</li>
-                            <li>John the Ripper + Hashcat</li>
-                            <li>Python for CTF (pwntools, requests, pycryptodome)</li>
-                            <li>Automation &amp; Scripting</li>
-                            <li>Note-taking &amp; Knowledge Base</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section id="sec-resources">
+      <h2><span class="idx">04</span>Free Learning Resources</h2>
+      <table>
+        <tr><th>Resource</th><th>Best for</th><th>Link</th></tr>
+        <tr><td>OverTheWire</td><td>Linux fundamentals via wargames</td><td><a href="https://overthewire.org/wargames/" target="_blank" rel="noopener">overthewire.org</a></td></tr>
+        <tr><td>TryHackMe (free rooms)</td><td>Guided beginner paths</td><td><a href="https://tryhackme.com/" target="_blank" rel="noopener">tryhackme.com</a></td></tr>
+        <tr><td>PicoCTF</td><td>Practice challenges, all categories</td><td><a href="https://picoctf.org/" target="_blank" rel="noopener">picoctf.org</a></td></tr>
+        <tr><td>PortSwigger Academy</td><td>Web exploitation, fully free</td><td><a href="https://portswigger.net/web-security" target="_blank" rel="noopener">portswigger.net/web-security</a></td></tr>
+        <tr><td>CryptoHack</td><td>Cryptography from scratch</td><td><a href="https://cryptohack.org/" target="_blank" rel="noopener">cryptohack.org</a></td></tr>
+        <tr><td>CTF101</td><td>Category primers/cheat sheets</td><td><a href="https://ctf101.org/" target="_blank" rel="noopener">ctf101.org</a></td></tr>
+        <tr><td>OWASP</td><td>Web vuln reference</td><td><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">owasp.org</a></td></tr>
+        <tr><td>OpenSecurityTraining2</td><td>Free x86/RE courseware</td><td><a href="https://opensecuritytraining.info/" target="_blank" rel="noopener">opensecuritytraining.info</a></td></tr>
+        <tr><td>Ghidra</td><td>Free NSA reverse engineering suite</td><td><a href="https://ghidra-sre.org/" target="_blank" rel="noopener">ghidra-sre.org</a></td></tr>
+        <tr><td>Wireshark</td><td>Packet analysis</td><td><a href="https://www.wireshark.org/" target="_blank" rel="noopener">wireshark.org</a></td></tr>
+        <tr><td>CyberChef</td><td>Encoding/crypto swiss-army knife</td><td><a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener">gchq.github.io/CyberChef</a></td></tr>
+        <tr><td>LiveOverflow</td><td>RE/binary exploitation intuition</td><td><a href="https://www.youtube.com/@LiveOverflow" target="_blank" rel="noopener">YouTube</a></td></tr>
+        <tr><td>John Hammond</td><td>CTF walkthroughs, all categories</td><td><a href="https://www.youtube.com/@_JohnHammond" target="_blank" rel="noopener">YouTube</a></td></tr>
+        <tr><td>ippsec</td><td>HackTheBox-style methodology</td><td><a href="https://www.youtube.com/@ippsec" target="_blank" rel="noopener">YouTube</a></td></tr>
+        <tr><td>NetworkChuck</td><td>Networking/Linux, beginner-friendly</td><td><a href="https://www.youtube.com/@NetworkChuck" target="_blank" rel="noopener">YouTube</a></td></tr>
+        <tr><td>David Bombal</td><td>Networking + security content</td><td><a href="https://www.youtube.com/@davidbombal" target="_blank" rel="noopener">YouTube</a></td></tr>
+        <tr><td>Computerphile</td><td>CS/crypto theory explained simply</td><td><a href="https://www.youtube.com/@Computerphile" target="_blank" rel="noopener">YouTube</a></td></tr>
+        <tr><td>freeCodeCamp</td><td>Full-length free courses</td><td><a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">YouTube</a></td></tr>
+      </table>
+    </section>
 
-        <!-- 50-DAY ROADMAP -->
-        <section id="roadmap" class="section container">
-            <h2>📅 50-DAY DETAILED ROADMAP</h2>
-            
-            <div class="search-box">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="search-input" placeholder="Search days, topics, or challenges (e.g. 'SQLi' or 'Bandit')" onkeyup="filterDays()">
-            </div>
-            
-            <div style="margin-bottom:15px; text-align:center; font-size:0.9rem; color:var(--text-dim);">
-                All days include: Learning objectives • Estimated hours • Prerequisites • Practical labs • Homework • Mini-project (where applicable) • Recommended free videos/articles • Expected outcome • Progress checklist
-            </div>
+    <section id="sec-certs">
+      <h2><span class="idx">05</span>Free Certificates & Badges</h2>
+      <table>
+        <tr><th>Platform</th><th>Certificate</th><th>Requirements</th><th>Difficulty</th><th>URL</th></tr>
+        <tr><td>TryHackMe</td><td>Room/path completion cert</td><td>Free account, complete free content</td><td>Beginner–Intermediate</td><td><a href="https://tryhackme.com/" target="_blank" rel="noopener">tryhackme.com</a></td></tr>
+        <tr><td>PicoCTF</td><td>Event participation badge</td><td>Register for an event</td><td>Beginner</td><td><a href="https://picoctf.org/" target="_blank" rel="noopener">picoctf.org</a></td></tr>
+        <tr><td>CryptoHack</td><td>Public leaderboard rank/badge</td><td>Free account</td><td>Beginner–Intermediate</td><td><a href="https://cryptohack.org/" target="_blank" rel="noopener">cryptohack.org</a></td></tr>
+        <tr><td>Cisco Networking Academy</td><td>Intro to Cybersecurity cert</td><td>Free account, complete course</td><td>Beginner</td><td><a href="https://www.netacad.com/" target="_blank" rel="noopener">netacad.com</a></td></tr>
+      </table>
+      <blockquote>Re-verify current certificate policies directly on each platform — free-tier offerings change.</blockquote>
+    </section>
 
-            <!-- DAY 1 -->
-            <details class="day-card" id="day1">
-                <summary><strong>DAY 1 — July 10</strong> • Foundations: Your First Terminal Steps <span style="float:right; color:var(--neon-green);">8 hrs</span></summary>
-                <div class="day-content">
-                    <div style="display:flex; gap:20px; flex-wrap:wrap;">
-                        <div style="flex:1; min-width:280px;">
-                            <h4>🎯 Learning Objectives</h4>
-                            <ul class="checklist">
-                                <li><input type="checkbox" id="d1-1"> Understand what cybersecurity &amp; CTF actually are</li>
-                                <li><input type="checkbox" id="d1-2"> Set up your learning environment (Linux)</li>
-                                <li><input type="checkbox" id="d1-3"> Master basic terminal navigation &amp; commands</li>
-                            </ul>
-                            
-                            <h4>⏱️ Estimated Study Hours: 8 hours</h4>
-                            <p>08:00–09:30 Theory &amp; Setup<br>
-                            09:30–12:00 Hands-on Labs<br>
-                            13:00–15:00 Practice Challenges<br>
-                            15:00–17:00 Notes + Reflection</p>
-                            
-                            <h4>📋 Prerequisites</h4>
-                            <p>None — absolute beginner friendly. You only need a computer with internet.</p>
-                        </div>
-                        
-                        <div style="flex:1; min-width:280px;">
-                            <h4>🛠️ Practical Labs</h4>
-                            <ol>
-                                <li>Install WSL2 on Windows or use Ubuntu live USB / VirtualBox (free). Or use online terminal: <a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank">tutorialspoint online terminal</a></li>
-                                <li>Watch: <a href="https://www.youtube.com/watch?v=IVquJh3DXUA" target="_blank">NetworkChuck — Linux for Beginners (first 30 min)</a></li>
-                                <li>Complete OverTheWire Bandit Level 0–3: <a href="https://overthewire.org/wargames/bandit/" target="_blank">https://overthewire.org/wargames/bandit/</a></li>
-                            </ol>
-                            
-                            <h4>📝 Homework / Challenges</h4>
-                            <ul class="checklist">
-                                <li><input type="checkbox" id="d1-h1"> Create a folder structure: ~/ctf/roadmap/day1/notes.md</li>
-                                <li><input type="checkbox" id="d1-h2"> Practice: ls, cd, pwd, cat, mkdir, touch, rm, cp, mv</li>
-                                <li><input type="checkbox" id="d1-h3"> Read the Bandit level pages carefully (they teach you)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <h4>🎥 Recommended Free Videos / Articles</h4>
-                    <ul>
-                        <li><a href="https://www.youtube.com/watch?v=IVquJh3DXUA" target="_blank">NetworkChuck: Linux Course for Beginners (YouTube)</a></li>
-                        <li><a href="https://linuxjourney.com/" target="_blank">Linux Journey (free interactive)</a></li>
-                        <li>Official OverTheWire Bandit page explanations</li>
-                    </ul>
-                    
-                    <h4>✅ Expected Learning Outcome</h4>
-                    <p>You can comfortably navigate a Linux terminal, understand absolute vs relative paths, and have solved your first 4 Bandit levels. You know what a flag looks like.</p>
-                    
-                    <h4>📋 Progress Checklist</h4>
-                    <ul class="checklist">
-                        <li><input type="checkbox" id="d1-c1"> Environment set up and tested</li>
-                        <li><input type="checkbox" id="d1-c2"> Bandit levels 0-3 completed + notes taken</li>
-                        <li><input type="checkbox" id="d1-c3"> Basic commands memorized (at least 15)</li>
-                        <li><input type="checkbox" id="d1-c4"> Personal notes created in ~/ctf/</li>
-                    </ul>
-                    
-                    <div class="callout" style="margin-top:15px;">
-                        <strong>Pro Tip:</strong> Start a personal Obsidian or Notion vault called "CTF Knowledge Base". Create a folder "Linux" and note every new command with example and when you used it.
-                    </div>
-                </div>
-            </details>
+    <section id="sec-writeups">
+      <h2><span class="idx">06</span>CTF Write-up Learning Guide</h2>
+      <p><strong>Why write-ups accelerate learning:</strong> they compress hours of someone else's trial-and-error into a 10-minute read, and repeated exposure to solution <em>patterns</em> builds intuition faster than solving everything from scratch.</p>
+      <p><strong>Avoiding spoilers:</strong> attempt genuinely for 30–45 minutes first; read only the write-up for the specific challenge you're stuck on.</p>
+      <p><strong>Notes per solved challenge:</strong> name/category/points, your first three ideas (even wrong ones), the actual technique, exact payloads used verbatim, and one line on what you'd try first next time.</p>
+      <p><strong>Reproduce, don't just read:</strong> rebuild the environment when possible and actually run the exploit yourself.</p>
+      <p><strong>Knowledge base:</strong> Obsidian or Notion (both free), one note per challenge, tagged by technique, with a master index.</p>
+      <p><strong>Searching GitHub:</strong> <code>&lt;challenge name&gt; writeup</code> or <code>&lt;CTF name&gt; &lt;year&gt; writeup github</code>.</p>
+      <p><strong>Common mistakes:</strong> reading the full write-up too early, not saving reusable payloads, skipping "why did this work," and only practicing your strong categories.</p>
+    </section>
 
-            <!-- DAY 2 -->
-            <details class="day-card" id="day2">
-                <summary><strong>DAY 2 — July 11</strong> • Linux Deep Dive + File Permissions <span style="float:right; color:var(--neon-green);">8 hrs</span></summary>
-                <div class="day-content">
-                    <div style="display:flex; gap:20px; flex-wrap:wrap;">
-                        <div style="flex:1; min-width:280px;">
-                            <h4>🎯 Learning Objectives</h4>
-                            <ul class="checklist">
-                                <li><input type="checkbox" id="d2-1"> Master file permissions (chmod, chown, umask)</li>
-                                <li><input type="checkbox" id="d2-2"> Understand users, groups, sudo</li>
-                                <li><input type="checkbox" id="d2-3"> Practice advanced navigation &amp; searching</li>
-                            </ul>
-                            <h4>⏱️ Estimated: 8 hours</h4>
-                        </div>
-                        <div style="flex:1; min-width:280px;">
-                            <h4>🛠️ Labs &amp; Homework</h4>
-                            <p>Continue OverTheWire Bandit <strong>levels 4–10</strong>.</p>
-                            <p>Practice: find, grep, locate, which, whereis, head, tail, less, wc, sort, uniq, cut, awk, sed basics.</p>
-                            <p>Mini-project: Write a simple Bash one-liner that finds all world-writable files in /tmp.</p>
-                            
-                            <h4>Free Resources</h4>
-                            <ul>
-                                <li><a href="https://overthewire.org/wargames/bandit/" target="_blank">OverTheWire Bandit (official)</a></li>
-                                <li><a href="https://www.youtube.com/watch?v=8X2k7vQvN5E" target="_blank">freeCodeCamp Linux Full Course (select modules)</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <h4>✅ Outcome</h4>
-                    <p>Confident with permissions, can search and manipulate files efficiently. Bandit 10 completed.</p>
-                </div>
-            </details>
+    <section id="sec-cheatsheets">
+      <h2><span class="idx">07</span>Cheat Sheets</h2>
+      <h3>Linux</h3>
+      <pre>ls -la
+find / -name x
+grep -r "x" .
+chmod +x file
+ssh user@host -p 2220
+sudo -l</pre>
+      <h3>Networking</h3>
+      <pre>nmap -sV -p- target
+dig domain.com ANY
+tcpdump -i eth0 port 80
+ss -tulpn</pre>
+      <h3>Web / SQL Injection</h3>
+      <pre>' OR '1'='1
+' UNION SELECT null,null-- -
+admin'--
+1' AND SLEEP(5)-- -</pre>
+      <h3>XSS</h3>
+      <pre>&lt;script&gt;alert(1)&lt;/script&gt;
+&lt;img src=x onerror=alert(1)&gt;
+"&gt;&lt;svg onload=alert(1)&gt;</pre>
+      <h3>Cryptography</h3>
+      <pre>echo "text" | base64
+echo "dGV4dA==" | base64 -d
+echo "text" | tr 'A-Za-z' 'N-ZA-Mn-za-m'   # ROT13</pre>
+      <h3>Reverse Engineering</h3>
+      <pre>file binary
+strings binary | less
+objdump -d binary
+gdb ./binary</pre>
+      <h3>Forensics</h3>
+      <pre>exiftool file.jpg
+binwalk -e file.bin
+steghide extract -sf image.jpg</pre>
+      <h3>Python skeleton</h3>
+      <pre>import requests
+s = requests.Session()
+r = s.get("http://target/")
+print(r.text)</pre>
+    </section>
 
-            <!-- More Days abbreviated for length but pattern continues... -->
-            <details class="day-card" id="day3">
-                <summary><strong>DAY 3 — July 12</strong> • Bash Scripting + Package Management <span style="float:right;">7.5 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Focus:</strong> Write your first Bash scripts. Learn apt/yum, installing tools. Bandit levels 11-15. Create aliases and functions. Mini-project: Script that automates basic reconnaissance on a target.</p>
-                    <p><strong>Resources:</strong> OverTheWire + <a href="https://linuxconfig.org/bash-scripting-tutorial-for-beginners" target="_blank">LinuxConfig Bash tutorial</a></p>
-                </div>
-            </details>
+    <section id="sec-install">
+      <h2><span class="idx">08</span>Tool Installation Guide</h2>
+      <pre>sudo apt update && sudo apt install -y \
+  nmap wireshark tcpdump netcat-openbsd \
+  john hashcat binwalk exiftool steghide \
+  gdb python3 python3-pip git
 
-            <details class="day-card" id="day4">
-                <summary><strong>DAY 4 — July 13</strong> • Networking Fundamentals Part 1 <span style="float:right;">8 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Focus:</strong> OSI Model, TCP/IP, IP addressing, Subnetting basics, Ports &amp; Services (common 0-1024). Use ip addr, ss, netstat, ping, traceroute, nslookup/dig.</p>
-                    <p><strong>Labs:</strong> TryHackMe "Pre Security" path (free rooms) + Wireshark intro on sample PCAPs from <a href="https://www.wireshark.org/" target="_blank">wireshark.org</a></p>
-                </div>
-            </details>
+pip3 install pwntools requests pycryptodome
 
-            <details class="day-card" id="day5">
-                <summary><strong>DAY 5 — July 14</strong> • Networking Part 2 + Wireshark <span style="float:right;">8 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Focus:</strong> HTTP/HTTPS deep dive, DNS, DHCP, common protocols. Capture and analyze traffic with Wireshark. Practice filters. tcpdump basics.</p>
-                    <p><strong>Challenges:</strong> PicoCTF General Skills (Networking section) + TryHackMe "Introduction to Cyber Security"</p>
-                </div>
-            </details>
+# Burp Suite Community: portswigger.net/burp/communitydownload
+# Ghidra: ghidra-sre.org
+# Docker: docs.docker.com/engine/install</pre>
+    </section>
 
-            <details class="day-card review-day" id="day7">
-                <summary><strong>DAY 7 — July 16</strong> ⭐ WEEKLY REVIEW #1 <span style="float:right; color:var(--neon-pink);">6 hrs focused practice</span></summary>
-                <div class="day-content">
-                    <h4>Review Session Structure</h4>
-                    <ul>
-                        <li>2 hrs: Revise all notes from Days 1-6. Highlight weak areas.</li>
-                        <li>2 hrs: Timed challenges — solve 5-7 Bandit levels you haven't done + 3 networking questions from PicoCTF.</li>
-                        <li>1 hr: Self-score (1-10) on Linux commands, permissions, basic networking. Identify top 3 weaknesses.</li>
-                        <li>1 hr: Reflection questions + update knowledge base.</li>
-                    </ul>
-                    <p><strong>Reflection Questions:</strong> Which command still confuses you? Did you understand why a permission change worked? What would you do differently?</p>
-                </div>
-            </details>
-
-            <!-- Phase 2 Web -->
-            <details class="day-card" id="day11">
-                <summary><strong>DAY 11 — July 20</strong> • Web Fundamentals + Burp Suite <span style="float:right;">8 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Focus:</strong> How the web works (requests, responses, headers, cookies, sessions). Install Burp Suite Community (free). Configure browser proxy. Intercept first requests on <a href="https://portswigger.net/web-security" target="_blank">PortSwigger Web Security Academy</a>.</p>
-                    <p><strong>Labs:</strong> PortSwigger "Getting Started" + "Authentication" labs (Apprentice level). TryHackMe "Web Fundamentals".</p>
-                    <p><strong>Mini Project:</strong> Map the login flow of a test site using Burp Repeater and Intruder.</p>
-                </div>
-            </details>
-
-            <details class="day-card" id="day15">
-                <summary><strong>DAY 15 — July 24</strong> • SQL Injection Mastery <span style="float:right;">8.5 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Focus:</strong> UNION-based, Error-based, Blind (Boolean &amp; Time), Out-of-band. Bypass filters. Use sqlmap (later). Practice on DVWA (install locally or use online vulnerable apps) and PortSwigger SQLi labs.</p>
-                    <p><strong>Resources:</strong> PortSwigger SQL Injection topic (all labs). PicoCTF Web challenges tagged SQLi.</p>
-                </div>
-            </details>
-
-            <!-- Crypto Phase -->
-            <details class="day-card" id="day21">
-                <summary><strong>DAY 21 — July 30</strong> • CryptoHack Introduction + Encodings <span style="float:right;">7 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Focus:</strong> Sign up at <a href="https://cryptohack.org/" target="_blank">cryptohack.org</a>. Complete "Introduction" challenges. Master Base64, Hex, ASCII, ROT13, URL encoding. Frequency analysis intro.</p>
-                    <p><strong>Challenges:</strong> CryptoHack "General" + "Introduction" categories. PicoCTF Crypto "Warmup" challenges.</p>
-                </div>
-            </details>
-
-            <details class="day-card" id="day25">
-                <summary><strong>DAY 25 — August 3</strong> • RSA &amp; Public Key Crypto Basics <span style="float:right;">8 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Focus:</strong> RSA math (modular exponentiation, primes, factoring). Common CTF attacks: small exponents, common modulus, Wiener, Franklin-Reiter. Use RsaCtfTool or Python.</p>
-                    <p><strong>Labs:</strong> CryptoHack RSA challenges (starter to medium). PicoCTF RSA tagged challenges.</p>
-                </div>
-            </details>
-
-            <!-- RE Phase -->
-            <details class="day-card" id="day29">
-                <summary><strong>DAY 29 — August 7</strong> • Reverse Engineering Intro + Ghidra <span style="float:right;">8 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Focus:</strong> Install Ghidra (free from NSA). Learn to load binaries, decompile, rename functions. Understand strings, imports, basic x86 assembly (registers, stack, calling convention).</p>
-                    <p><strong>Practice:</strong> PicoCTF Reverse "Warmup" + easy challenges. crackmes.one easy category (first 5).</p>
-                </div>
-            </details>
-
-            <!-- Forensics -->
-            <details class="day-card" id="day36">
-                <summary><strong>DAY 36 — August 14</strong> • File Forensics + Steganography <span style="float:right;">7.5 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Focus:</strong> File signatures (magic bytes), carving with binwalk/foremost, metadata with ExifTool, basic image/audio stego (steghide, zsteg). Volatility for memory dumps intro.</p>
-                    <p><strong>Labs:</strong> PicoCTF Forensics category challenges. TryHackMe free forensics rooms.</p>
-                </div>
-            </details>
-
-            <!-- Misc + Scripting -->
-            <details class="day-card" id="day43">
-                <summary><strong>DAY 43 — August 21</strong> • Python for CTF + OSINT Basics <span style="float:right;">8 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Focus:</strong> Python scripting essentials for CTF (requests, BeautifulSoup or regex for web, pycryptodome, pwntools intro). OSINT: Google dorking, social media recon, metadata in images, WHOIS, Shodan free tier.</p>
-                    <p><strong>Tools:</strong> Install pwntools, requests. Practice simple scripts to automate login or decode.</p>
-                </div>
-            </details>
-
-            <!-- Final Days -->
-            <details class="day-card final-week" id="day48">
-                <summary><strong>DAY 48 — August 26</strong> • Full CTF Simulation Day 1 <span style="float:right; color:var(--neon-purple);">9 hrs</span></summary>
-                <div class="day-content">
-                    <p><strong>Goal:</strong> Simulate real competition pressure. Pick a past beginner-friendly CTF from CTFtime.org archives or PicoCTF 2024/2025 practice mode. Time-box categories. Focus on flag hunting strategy, note-taking under time pressure, and knowing when to move on.</p>
-                    <p><strong>Strategy:</strong> 1) Quick scan all challenges 2) Prioritize easy wins (general skills, crypto encodings) 3) Deep dive on 2-3 categories you are strongest in 4) Document everything.</p>
-                </div>
-            </details>
-
-            <details class="day-card final-week" id="day50">
-                <summary><strong>DAY 50 — August 28</strong> • Final Polish + Competition Readiness <span style="float:right; color:var(--neon-purple);">6-8 hrs</span></summary>
-                <div class="day-content">
-                    <h4>Final Checklist Before Competition</h4>
-                    <ul class="checklist">
-                        <li><input type="checkbox"> All cheat sheets printed or bookmarked</li>
-                        <li><input type="checkbox"> Notes vault organized and searchable</li>
-                        <li><input type="checkbox"> Tools tested (Burp, Ghidra, Wireshark, John, binwalk, etc.)</li>
-                        <li><input type="checkbox"> Sleep well + hydration plan</li>
-                        <li><input type="checkbox"> Review top 10 mistakes beginners make (from write-up guide)</li>
-                    </ul>
-                    <p><strong>Congratulations!</strong> You have completed the intensive 50-day program. You are now ready to compete and score well in beginner/intermediate CTFs.</p>
-                </div>
-            </details>
-            
-            <p style="text-align:center; margin-top:30px; color:var(--text-dim);">... (Full 50 days follow the exact same detailed structure. Each day has specific labs from the listed platforms, progressive difficulty, and builds directly on previous days. The pattern above shows the depth and style for every single day.)</p>
-        </section>
-
-        <!-- WEEKLY REVIEWS -->
-        <section id="weekly" class="section container">
-            <h2>🔄 WEEKLY REVIEW DAYS (Every 7th Day)</h2>
-            <div class="card glass">
-                <p>Review days are non-negotiable. They prevent burnout, consolidate knowledge, and dramatically improve retention. Treat them as seriously as learning days.</p>
-                
-                <h3>Standard Review Day Schedule (6-7 hours)</h3>
-                <table>
-                    <tr><th>Time</th><th>Activity</th><th>Details</th></tr>
-                    <tr><td>08:00-10:00</td><td>Notes Revision</td><td>Re-read all notes from previous 6 days. Rewrite weak concepts in your own words.</td></tr>
-                    <tr><td>10:00-12:00</td><td>Timed Practice</td><td>Complete 8-12 mixed challenges from previous topics under time pressure (use CTFtime or PicoCTF practice).</td></tr>
-                    <tr><td>13:00-14:30</td><td>Weakness Analysis</td><td>Identify bottom 3 skills. Spend focused time on one weakness with targeted labs.</td></tr>
-                    <tr><td>14:30-16:00</td><td>Score Yourself</td><td>Rate 1-10 on each major topic. Update progress tracker. Celebrate wins.</td></tr>
-                    <tr><td>16:00-17:00</td><td>Reflection + Planning</td><td>Answer reflection questions. Plan adjustments for next week. Update cheat sheets.</td></tr>
-                </table>
-            </div>
-        </section>
-
-        <!-- FINAL WEEK -->
-        <section id="finalweek" class="section container">
-            <h2>🏁 FINAL WEEK PREPARATION (Days 44-50)</h2>
-            <div class="card glass">
-                <p>This week shifts from learning to <strong>competition simulation and mental preparation</strong>. You will do full-length practice CTFs, refine your personal methodology, and build confidence.</p>
-                
-                <h3>Key Activities</h3>
-                <ul>
-                    <li>Complete at least 2 full beginner/intermediate CTFs from archives (CTFtime.org has many with writeups available after).</li>
-                    <li>Practice time management: 2-hour sprints per category then switch.</li>
-                    <li>Build and test your personal "CTF toolkit" folder with scripts, wordlists (small), and cheat sheets.</li>
-                    <li>Team collaboration simulation (even if solo): Practice explaining your thought process out loud or in notes.</li>
-                    <li>Flag hunting strategy: Learn to read challenge descriptions for hints, use recon first, avoid rabbit holes.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- FREE RESOURCES -->
-        <section id="resources" class="section container">
-            <h2>📚 100% FREE LEARNING RESOURCES</h2>
-            <div class="card glass">
-                <table>
-                    <tr><th>Platform</th><th>Best For</th><th>Direct Link</th><th>Notes</th></tr>
-                    <tr><td>OverTheWire Bandit</td><td>Linux + Terminal</td><td><a href="https://overthewire.org/wargames/bandit/" target="_blank">overthewire.org</a></td><td>Start here Day 1</td></tr>
-                    <tr><td>TryHackMe (Free Tier)</td><td>Guided paths, Pre Security, Web</td><td><a href="https://tryhackme.com/" target="_blank">tryhackme.com</a></td><td>Many free rooms &amp; paths</td></tr>
-                    <tr><td>PicoCTF / CyLab</td><td>Full CTF challenges (all categories)</td><td><a href="https://picoctf.org/" target="_blank">picoctf.org</a></td><td>Beginner friendly, practice mode</td></tr>
-                    <tr><td>PortSwigger Academy</td><td>Web Exploitation + Burp</td><td><a href="https://portswigger.net/web-security" target="_blank">portswigger.net/web-security</a></td><td>World class, 100% free labs</td></tr>
-                    <tr><td>CryptoHack</td><td>Cryptography</td><td><a href="https://cryptohack.org/" target="_blank">cryptohack.org</a></td><td>Interactive, trophies</td></tr>
-                    <tr><td>CTF101</td><td>Concepts &amp; guides</td><td><a href="https://ctf101.org/" target="_blank">ctf101.org</a></td><td>Great explanations</td></tr>
-                    <tr><td>YouTube: NetworkChuck, John Hammond, LiveOverflow, IppSec (select), Computerphile</td><td>Video explanations</td><td>Search their channels</td><td>Free high-quality content</td></tr>
-                </table>
-            </div>
-        </section>
-
-        <!-- CERTIFICATES -->
-        <section id="certs" class="section container">
-            <h2>🏅 FREE CERTIFICATES &amp; BADGES</h2>
-            <div class="card glass">
-                <table>
-                    <tr><th>Platform</th><th>What You Get (Free)</th><th>Requirements</th><th>Difficulty</th><th>Link</th></tr>
-                    <tr><td>CryptoHack</td><td>Trophies, leaderboard position, profile achievements</td><td>Solve challenges</td><td>Beginner-Intermediate</td><td>cryptohack.org</td></tr>
-                    <tr><td>PortSwigger Academy</td><td>Progress tracking, Hall of Fame (swag for top), completion sense of achievement</td><td>Complete labs</td><td>Apprentice to Expert</td><td>portswigger.net/web-security</td></tr>
-                    <tr><td>TryHackMe (Free)</td><td>Public profile, room completion badges, streaks, community recognition</td><td>Complete free rooms</td><td>Easy</td><td>tryhackme.com</td></tr>
-                    <tr><td>PicoCTF</td><td>Achievements, certificates for some events/competitions</td><td>Participate &amp; solve</td><td>Beginner</td><td>picoctf.org</td></tr>
-                </table>
-                <p style="margin-top:15px; font-size:0.9rem;">Note: Truly free verifiable certificates are limited. Focus on the skills and public profiles/badges as proof of work. These are highly respected in the community.</p>
-            </div>
-        </section>
-
-        <!-- WRITE-UP GUIDE -->
-        <section id="writeups" class="section container">
-            <h2>📝 CTF WRITE-UP LEARNING GUIDE</h2>
-            <div class="card glass">
-                <h3>Why Write-ups Accelerate Learning 10x</h3>
-                <p>Reading high-quality write-ups after you have attempted (or solved) a challenge shows you alternative (often better) approaches, tools you didn't know, and the exact thought process of experienced players.</p>
-                
-                <h3>How to Avoid Spoilers</h3>
-                <ol>
-                    <li>Attempt the challenge for at least 45-90 minutes first.</li>
-                    <li>If stuck, search for the challenge name + "writeup" but only read the introduction or methodology overview — stop before the solution.</li>
-                    <li>Use write-ups primarily for challenges you have already solved to deepen understanding.</li>
-                </ol>
-                
-                <h3>What to Write in Your Personal Notes</h3>
-                <ul>
-                    <li>Challenge name + category + difficulty</li>
-                    <li>Key insight or vulnerability type</li>
-                    <li>Exact tools/commands used (with why)</li>
-                    <li>Payload or exploit code (sanitized)</li>
-                    <li>What you learned / common pattern</li>
-                    <li>Links to related challenges or resources</li>
-                </ul>
-                
-                <h3>Best Places for Write-ups</h3>
-                <p>CTFtime.org (event pages have writeup links) • GitHub (search "ctf writeup [challenge name]") • Personal blogs of top teams • Medium / Dev.to</p>
-                
-                <div class="callout">
-                    <strong>Golden Rule:</strong> Never copy-paste a solution without understanding and reproducing it yourself in your own lab environment.
-                </div>
-            </div>
-        </section>
-
-        <!-- CHEAT SHEETS -->
-        <section id="cheatsheets" class="section container">
-            <h2>📋 PRINTABLE CHEAT SHEETS</h2>
-            <div class="card glass">
-                <p>These are embedded for quick reference. Print this page or copy sections into your notes.</p>
-                
-                <details>
-                    <summary>Linux / Bash Top Commands</summary>
-                    <pre><code>ls -la          # detailed list
-cd /path        # change dir
-pwd             # print working dir
-cat file        # view file
-grep "pattern" file
-find / -name "*.txt" 2>/dev/null
-chmod 755 file
-chown user:group file
-sudo su -       # root
-ssh user@host -p port
-scp file user@host:/path
-tar -czvf archive.tar.gz dir/
-curl -I https://site.com   # headers
-wget URL</code></pre>
-                </details>
-                
-                <details>
-                    <summary>Networking Quick Reference</summary>
-                    <pre><code>ip addr show
-ss -tuln        # listening ports
-nmap -sC -sV target
-wireshark       # GUI
-tcpdump -i eth0 -w capture.pcap
-dig domain.com
-nslookup domain
-curl -v https://site.com
-netcat -lvnp 4444</code></pre>
-                </details>
-                
-                <details>
-                    <summary>Web / Burp / Common Payloads</summary>
-                    <pre><code>SQLi basic: ' OR '1'='1
-XSS: &lt;script&gt;alert(1)&lt;/script&gt;
-Command Inj: ; ls
-LFI: ../../etc/passwd
-Burp: Proxy → Intercept → Repeater → Intruder
-Common ports: 80/443 web, 22 ssh, 3306 mysql</code></pre>
-                </details>
-                
-                <details>
-                    <summary>Cryptography Quick Hits</summary>
-                    <pre><code>Base64 decode: echo "..." | base64 -d
-ROT13: echo "..." | tr 'A-Za-z' 'N-ZA-Mn-za-m'
-Hash identify: hashid or hash-identifier
-John: john --wordlist=rockyou.txt hash.txt
-CyberChef (online): https://gchq.github.io/CyberChef/</code></pre>
-                </details>
-                
-                <!-- Additional cheat sheets abbreviated but full in real version -->
-            </div>
-        </section>
-
-        <!-- TOOL INSTALL -->
-        <section id="tools" class="section container">
-            <h2>🛠️ TOOL INSTALLATION GUIDE (Linux)</h2>
-            <div class="card glass">
-                <pre><code># Update
-sudo apt update && sudo apt upgrade -y
-
-# Essential
-sudo apt install -y git curl wget vim nano net-tools nmap wireshark tcpdump john hashcat binwalk foremost exiftool steghide
-
-# Python CTF libs
-pip3 install pwntools pycryptodome requests beautifulsoup4
-
-# Ghidra (download from NSA GitHub releases, unzip, run ghidraRun)
-
-# Burp Suite Community - download from portswigger.net
-
-# Optional but useful: gobuster, ffuf, sqlmap (via pip or apt)</code></pre>
-            </div>
-        </section>
-
-        <!-- TOOLKIT -->
-        <section id="toolkit" class="section container">
-            <h2>🎒 BUILD YOUR PERSONAL CTF TOOLKIT</h2>
-            <div class="card glass">
-                <p>Create this folder structure on Day 1 and maintain it:</p>
-                <pre><code>~/ctf/
-├── cheat-sheets/
+    <section id="sec-toolkit">
+      <h2><span class="idx">09</span>Personal Toolkit / Folder Structure</h2>
+      <pre>CTF-Toolkit/
+├── scripts/
+│   ├── crypto_helper.py
+│   ├── web_exploit_template.py
+│   └── stego_check.sh
+├── wordlists/
+├── cheatsheets/
 ├── notes/
-│   ├── linux/
-│   ├── web/
-│   ├── crypto/
-│   └── forensics/
-├── tools/
-│   ├── scripts/
-│   └── wordlists/
-├── writeups/
-└── challenges/
-    └── current-ctf/</code></pre>
-            </div>
-        </section>
+└── writeups/
+    ├── web/
+    ├── crypto/
+    ├── forensics/
+    ├── re/
+    └── misc/</pre>
+    </section>
 
-        <!-- FAQ -->
-        <section id="faq" class="section container">
-            <h2>❓ FREQUENTLY ASKED QUESTIONS</h2>
-            <div class="card glass">
-                <details><summary>How do I stay motivated for 50 days?</summary><p>Track daily wins in your notes. Join Discord communities (TryHackMe, PicoCTF). Celebrate completing each phase. Remember your "why".</p></details>
-                <details><summary>What if I fall behind?</summary><p>Don't panic. Skip non-critical days or compress 2 days into 1 weekend. The reviews will help catch up. Consistency > perfection.</p></details>
-                <details><summary>Do I need a powerful computer?</summary><p>No. Most challenges run in browser or lightweight VMs. WSL2 or a cheap VPS is enough. Ghidra runs on modest hardware.</p></details>
-            </div>
-        </section>
+    <section id="sec-faq">
+      <h2><span class="idx">10</span>FAQ</h2>
+      <p><strong>Falling behind schedule?</strong> Cut Reverse Engineering depth first, then Forensics. Never skip Web/Crypto review days.</p>
+      <p><strong>Specialize or stay broad?</strong> Stay broad through Day 35, specialize afterward based on your Week 7 self-assessment — breadth wins more points in beginner CTFs than narrow depth.</p>
+      <p><strong>Need a home lab?</strong> A free VirtualBox + Ubuntu/Kali VM covers everything in this plan.</p>
+      <p><strong>Stuck for hours?</strong> Cap it at 45–60 minutes, then check a hint/write-up and move on.</p>
+    </section>
 
-        <!-- GLOSSARY -->
-        <section id="glossary" class="section container">
-            <h2>📖 GLOSSARY OF KEY TERMS</h2>
-            <div class="card glass">
-                <dl>
-                    <dt>CTF</dt><dd>Capture The Flag — competitive cybersecurity challenge where you find hidden "flags" (strings) by exploiting vulnerabilities.</dd>
-                    <dt>Flag</dt><dd>The secret string you submit for points, usually in format flag{...} or picoCTF{...}.</dd>
-                    <dt>OWASP Top 10</dt><dd>Standard list of the most critical web application security risks.</dd>
-                    <dt>Burp Suite</dt><dd>Industry standard web proxy/interception tool for testing web apps.</dd>
-                    <dt>Ghidra</dt><dd>Free NSA reverse engineering tool (decompiler + disassembler).</dd>
-                    <dt>Binwalk</dt><dd>Tool to find and extract hidden files in firmware/images (stego/forensics).</dd>
-                </dl>
-            </div>
-        </section>
+    <section id="sec-glossary">
+      <h2><span class="idx">11</span>Glossary</h2>
+      <table>
+        <tr><th>Term</th><th>Meaning</th></tr>
+        <tr><td>CTF</td><td>Capture The Flag — a security competition of exploit-based challenges</td></tr>
+        <tr><td>Flag</td><td>The proof-of-solve string, e.g. <code>flag{...}</code></td></tr>
+        <tr><td>SQLi</td><td>SQL Injection</td></tr>
+        <tr><td>XSS</td><td>Cross-Site Scripting</td></tr>
+        <tr><td>CSRF</td><td>Cross-Site Request Forgery</td></tr>
+        <tr><td>IDOR</td><td>Insecure Direct Object Reference</td></tr>
+        <tr><td>SSTI</td><td>Server-Side Template Injection</td></tr>
+        <tr><td>LFI/RFI</td><td>Local/Remote File Inclusion</td></tr>
+        <tr><td>JWT</td><td>JSON Web Token</td></tr>
+        <tr><td>RE</td><td>Reverse Engineering</td></tr>
+        <tr><td>Stego</td><td>Steganography — hiding data inside another file</td></tr>
+        <tr><td>OSINT</td><td>Open Source Intelligence</td></tr>
+        <tr><td>Pcap</td><td>Packet capture file</td></tr>
+      </table>
+    </section>
 
-        <footer style="text-align:center; padding:40px 20px; color:var(--text-dim); font-size:0.85rem;">
-            Built with ❤️ for absolute beginners who want to dominate CTFs.<br>
-            All resources verified free as of 2026. Practice ethically. Have fun. Good luck on August 29!
-        </footer>
-    </main>
+    <footer>
+      Built for a 50-day sprint, July 10 → August 29. Progress is stored only in this browser session — use Export to save it to a file. Consistency beats perfection.
+    </footer>
 
-    <script>
-        // Progress Tracker with localStorage
-        function updateProgress() {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            let checked = 0;
-            checkboxes.forEach(cb => {
-                if (cb.checked) checked++;
-                // Save individual state
-                if (cb.id) localStorage.setItem(cb.id, cb.checked);
-            });
-            
-            const total = checkboxes.length || 420; // approximate target
-            const percent = Math.round((checked / total) * 100);
-            
-            document.getElementById('progress-fill').style.width = percent + '%';
-            document.getElementById('progress-text').innerHTML = 
-                `${percent}% • ${checked}/${total} tasks`;
-            
-            // Color change at milestones
-            const fill = document.getElementById('progress-fill');
-            if (percent > 75) fill.style.background = 'linear-gradient(90deg, #00ff9f, #00f9ff)';
-            else if (percent > 50) fill.style.background = 'linear-gradient(90deg, #00f9ff, #ff00aa)';
-        }
-        
-        function loadProgress() {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(cb => {
-                if (cb.id && localStorage.getItem(cb.id) === 'true') {
-                    cb.checked = true;
-                }
-                cb.addEventListener('change', updateProgress);
-            });
-            updateProgress();
-        }
-        
-        // Search / Filter Days
-        function filterDays() {
-            const term = document.getElementById('search-input').value.toLowerCase().trim();
-            const days = document.querySelectorAll('#roadmap details');
-            
-            days.forEach(day => {
-                const text = day.textContent.toLowerCase();
-                if (term === '' || text.includes(term)) {
-                    day.style.display = '';
-                } else {
-                    day.style.display = 'none';
-                }
-            });
-        }
-        
-        // Sidebar toggle for mobile
-        function toggleSidebar() {
-            const sb = document.getElementById('sidebar');
-            sb.classList.toggle('collapsed');
-        }
-        
-        // Active nav highlighting
-        function highlightNav() {
-            const links = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('section[id]');
-            
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (scrollY >= sectionTop - 200) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                links.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + current) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        }
-        
-        // Keyboard shortcuts
-        function setupKeyboard() {
-            document.addEventListener('keydown', function(e) {
-                if (e.key === '/' && document.activeElement.tagName === 'BODY') {
-                    e.preventDefault();
-                    document.getElementById('search-input').focus();
-                }
-                if (e.key.toLowerCase() === '?' && e.target.tagName === 'BODY') {
-                    e.preventDefault();
-                    const sb = document.getElementById('sidebar');
-                    sb.classList.toggle('collapsed');
-                }
-            });
-            
-            // Easter egg: type "flag" 
-            let typed = '';
-            document.addEventListener('keypress', function(e) {
-                typed += e.key;
-                if (typed.length > 10) typed = typed.slice(-10);
-                if (typed.includes('flag{')) {
-                    const msg = document.createElement('div');
-                    msg.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#111;padding:15px 25px;border:1px solid #0ff;color:#0ff;border-radius:8px;z-index:9999;';
-                    msg.innerHTML = '🎉 You found the hidden flag! Keep going — you\'re doing great!';
-                    document.body.appendChild(msg);
-                    setTimeout(() => msg.remove(), 4000);
-                    typed = '';
-                }
-            });
-        }
-        
-        // Initialize everything
-        function init() {
-            loadProgress();
-            highlightNav();
-            setupKeyboard();
-            
-            // Auto-open first few days on load for new users (optional)
-            // document.getElementById('day1').open = true;
-            
-            // Welcome message in console for devs
-            console.log('%c[CTF Roadmap] Production-ready offline HTML loaded successfully. All systems nominal.', 'color:#00f9ff');
-            
-            // Initial progress update
-            setTimeout(updateProgress, 500);
-        }
-        
-        window.onload = init;
-    </script>
+  </main>
+</div>
+
+<script>
+// ---------- Data: weeks/days ----------
+const weeks = [
+{ id:'w1', title:'Week 1 — Linux & CLI Fundamentals', range:'Days 1–7', days:[
+  {d:1,label:'Linux orientation: filesystem, ls/cd/cat/man, file types',hours:'6–8',review:false,items:['Bandit levels 0–4 solved','Comfortable with ls/cd/cat/less/man']},
+  {d:2,label:'Permissions (chmod/chown/sudo), processes (ps/top/kill)',hours:'6–8',review:false,items:['Bandit levels 5–9 solved','Can explain rwx permission bits']},
+  {d:3,label:'Text processing: grep, find, sed, awk, pipes',hours:'7–9',review:false,items:['Bandit levels 10–14 solved','Chained 3+ commands with pipes']},
+  {d:4,label:'Package management, env vars, PATH, cron',hours:'6–8',review:false,items:['Bandit levels 15–18 solved','Installed a package with apt']},
+  {d:5,label:'Vim/Nano basics, SSH keys',hours:'6–8',review:false,items:['Bandit levels 19–22 solved','Edited a file fully in the terminal']},
+  {d:6,label:'Bash scripting: variables, loops, conditionals',hours:'7–9',review:false,items:['Wrote 3 working Bash scripts','Bandit levels 23–26 solved']},
+  {d:7,label:'REVIEW DAY — finish Bandit, PicoCTF General Skills',hours:'6–8',review:true,items:['Solved a fresh level in <15 min unaided','Scored yourself 1–5 on speed/fluency']},
+]},
+{ id:'w2', title:'Week 2 — Networking', range:'Days 8–14', days:[
+  {d:8,label:'OSI model + TCP/IP model',hours:'6–8',review:false,items:['Can explain all 7 OSI layers','Completed THM Intro to Networking']},
+  {d:9,label:'IP addressing, subnetting, ARP',hours:'6–8',review:false,items:['Can read a CIDR block host range']},
+  {d:10,label:'Ports & protocols, netstat/ss, nmap basics',hours:'6–8',review:false,items:['Scanned own VM with nmap -sV','Identified a service from its port']},
+  {d:11,label:'DNS deep dive: records, dig/nslookup',hours:'6–8',review:false,items:['Manually traced a domain resolution']},
+  {d:12,label:'HTTP/HTTPS fundamentals, TLS overview',hours:'7–9',review:false,items:['Read a raw HTTP request/response fluently']},
+  {d:13,label:'Wireshark + tcpdump basics, filters',hours:'7–9',review:false,items:['Captured own traffic','Isolated one conversation in a pcap']},
+  {d:14,label:'REVIEW DAY — networking-flavored PicoCTF',hours:'6–8',review:true,items:['Found a suspicious flow in a pcap unaided','Bandit wargame 90%+ complete']},
+]},
+{ id:'w3', title:'Week 3 — Web Exploitation I', range:'Days 15–21', days:[
+  {d:15,label:'Cookies/sessions/auth, install & configure Burp',hours:'7–9',review:false,items:['Intercepted a login request in Burp']},
+  {d:16,label:'Set up DVWA + Juice Shop locally (Docker)',hours:'6–8',review:false,items:['Both apps running locally']},
+  {d:17,label:'SQLi fundamentals: UNION-based, error-based',hours:'8–10',review:false,items:['Extracted data from a vulnerable login form']},
+  {d:18,label:'Blind & time-based SQLi, sqlmap intro',hours:'8–10',review:false,items:['Exfiltrated data with no visible output']},
+  {d:19,label:'XSS: reflected, stored, DOM-based',hours:'8–10',review:false,items:['Popped an alert + stole a cookie in a lab']},
+  {d:20,label:'PicoCTF Web Exploitation sprint',hours:'8–10',review:false,items:['Solved 4–6 web challenges independently']},
+  {d:21,label:'REVIEW DAY — redo weakest lab timed',hours:'6–8',review:true,items:['Solved a fresh SQLi lab in <20 min']},
+]},
+{ id:'w4', title:'Week 4 — Web Exploitation II', range:'Days 22–28', days:[
+  {d:22,label:'CSRF: tokens, SameSite cookies',hours:'7–9',review:false,items:['Built a working CSRF PoC page']},
+  {d:23,label:'Command Injection',hours:'7–9',review:false,items:['Chained OS commands via vulnerable input']},
+  {d:24,label:'Directory Traversal & LFI/RFI',hours:'7–9',review:false,items:['Read an arbitrary file via traversal']},
+  {d:25,label:'Server-Side Template Injection (SSTI)',hours:'7–9',review:false,items:['Exploited a template injection RCE path']},
+  {d:26,label:'JWT vulnerabilities (alg confusion, weak secret)',hours:'7–9',review:false,items:['Forged a JWT to escalate privilege']},
+  {d:27,label:'IDOR + File Upload vulnerabilities',hours:'8–10',review:false,items:['Bypassed an upload filter for code exec']},
+  {d:28,label:'REVIEW DAY — mixed web sprint, timed 3hr',hours:'6–8',review:true,items:['Solved 6+ mixed web challenges in one sitting']},
+]},
+{ id:'w5', title:'Week 5 — Cryptography', range:'Days 29–35', days:[
+  {d:29,label:'Encoding vs encryption: Base64/32/16, ROT13, Caesar',hours:'6–8',review:false,items:['Decoded/encoded by hand and with CyberChef']},
+  {d:30,label:'XOR fundamentals, key recovery',hours:'7–9',review:false,items:['Recovered an XOR key from known plaintext']},
+  {d:31,label:'Hashing: MD5/SHA, identification',hours:'7–9',review:false,items:['Identified a hash type and its weaknesses']},
+  {d:32,label:'Classical cryptanalysis: frequency analysis, Vigenère',hours:'8–10',review:false,items:['Broke a Vigenère cipher without the key']},
+  {d:33,label:'Symmetric crypto: AES modes, ECB leakage',hours:'7–9',review:false,items:['Spotted an ECB-mode pattern leak']},
+  {d:34,label:'Asymmetric crypto: RSA basics, small-e/small-n',hours:'8–10',review:false,items:['Solved a weak-RSA challenge']},
+  {d:35,label:'REVIEW DAY — crypto sprint, timed',hours:'6–8',review:true,items:['Solved 5+ crypto challenges across sub-topics']},
+]},
+{ id:'w6', title:'Week 6 — Reverse Engineering + Forensics', range:'Days 36–42', days:[
+  {d:36,label:'x86 assembly overview (concepts)',hours:'7–9',review:false,items:['Can describe what a short asm snippet does']},
+  {d:37,label:'ELF/PE basics, file/strings/objdump',hours:'6–8',review:false,items:['Extracted quick-win info without a debugger']},
+  {d:38,label:'Ghidra setup + static analysis',hours:'8–10',review:false,items:['Found main() and flag-check logic statically']},
+  {d:39,label:'GDB basics: breakpoints, stepping',hours:'7–9',review:false,items:['Stepped through a binary to a comparison point']},
+  {d:40,label:'Easy crackmes + PicoCTF Reverse sprint',hours:'8–10',review:false,items:['Solved 3+ easy crackmes/RE challenges']},
+  {d:41,label:'Forensics: magic bytes, metadata, Binwalk, stego',hours:'7–9',review:false,items:['Extracted hidden data from a carrier file']},
+  {d:42,label:'REVIEW DAY — forensics + Volatility intro',hours:'7–9',review:true,items:['Solved 4+ forensics challenges']},
+]},
+{ id:'w7', title:'Week 7 — Misc, OSINT, Scripting + Timed Practice', range:'Days 43–49', days:[
+  {d:43,label:'OSINT fundamentals (reverse image, metadata, ethical tracing)',hours:'7–9',review:false,items:['Solved a find-the-person/place challenge']},
+  {d:44,label:'Steganography + QR/encoding tricks',hours:'7–9',review:false,items:['Extracted a flag hidden in an image']},
+  {d:45,label:'Password cracking: John + Hashcat, wordlists',hours:'7–9',review:false,items:['Cracked a weak hash end-to-end']},
+  {d:46,label:'Python for CTF: requests, pwntools basics',hours:'8–10',review:false,items:['Automated a solve with a script']},
+  {d:47,label:'Timed mixed practice — Web + Crypto',hours:'8–10',review:false,items:['Tracked solve-time trend vs earlier weeks']},
+  {d:48,label:'Timed mixed practice — RE + Forensics + Misc',hours:'8–10',review:false,items:['Identified true weak category before finals']},
+  {d:49,label:'REVIEW DAY — full weak-spot triage',hours:'7–9',review:true,items:['Ranked all 6 categories by confidence, written']},
+]},
+];
+
+// ---------- Render sidebar nav ----------
+const navEl = document.getElementById('navlinks');
+const sections = [
+  {id:'sec-overview',label:'01 · Overview'},
+  {id:'sec-weeks',label:'02 · 50-Day Roadmap'},
+  {id:'sec-day50',label:'03 · Day 50 Finale'},
+  {id:'sec-resources',label:'04 · Resources'},
+  {id:'sec-certs',label:'05 · Certificates'},
+  {id:'sec-writeups',label:'06 · Write-up Guide'},
+  {id:'sec-cheatsheets',label:'07 · Cheat Sheets'},
+  {id:'sec-install',label:'08 · Tool Install'},
+  {id:'sec-toolkit',label:'09 · Toolkit'},
+  {id:'sec-faq',label:'10 · FAQ'},
+  {id:'sec-glossary',label:'11 · Glossary'},
+];
+sections.forEach(s=>{
+  const a=document.createElement('a');
+  a.href='#'+s.id; a.className='navlink'; a.textContent=s.label;
+  a.onclick=()=>{ if(window.innerWidth<=900) document.getElementById('sidebar').classList.remove('open'); };
+  navEl.appendChild(a);
+});
+
+// ---------- Render weeks/days ----------
+const container = document.getElementById('weeksContainer');
+weeks.forEach(week=>{
+  const h3 = document.createElement('h3');
+  h3.textContent = week.title + '  ('+week.range+')';
+  h3.id = week.id;
+  container.appendChild(h3);
+  const wp = document.createElement('div');
+  wp.className='week-progress';
+  wp.id = week.id+'-progress';
+  container.appendChild(wp);
+
+  week.days.forEach(day=>{
+    const card = document.createElement('div');
+    card.className='day-card';
+    card.id = 'day-'+day.d;
+    const head = document.createElement('div');
+    head.className='day-head';
+    head.innerHTML = `<span class="badge${day.review?' review':''}">DAY ${day.d}${day.review?' · REVIEW':''}</span><span class="title">${day.label}</span><span class="caret">▸</span>`;
+    head.onclick = ()=> card.classList.toggle('open');
+    const body = document.createElement('div');
+    body.className='day-body';
+    let itemsHtml = day.items.map((it,i)=>{
+      const key = 'day'+day.d+'-item'+i;
+      return `<li><input type="checkbox" data-key="${key}" id="${key}"><label for="${key}">${it}</label></li>`;
+    }).join('');
+    body.innerHTML = `<p class="meta">Estimated hours: ${day.hours}</p><ul class="checklist">${itemsHtml}</ul>`;
+    card.appendChild(head);
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+});
+
+// ---------- Progress tracking (in-memory only; export/import for persistence) ----------
+let state = {};
+function allCheckboxes(){ return Array.from(document.querySelectorAll('.checklist input[type=checkbox]')); }
+
+function updateProgress(){
+  const boxes = allCheckboxes();
+  const total = boxes.length;
+  const checked = boxes.filter(b=>b.checked).length;
+  const pct = total? Math.round(checked/total*100) : 0;
+  document.getElementById('overallPct').textContent = pct+'%';
+  document.getElementById('overallBar').style.width = pct+'%';
+
+  weeks.forEach(week=>{
+    let wTotal=0, wChecked=0;
+    week.days.forEach(day=>{
+      day.items.forEach((it,i)=>{
+        wTotal++;
+        const cb = document.getElementById('day'+day.d+'-item'+i);
+        if(cb && cb.checked) wChecked++;
+      });
+    });
+    const wpct = wTotal? Math.round(wChecked/wTotal*100):0;
+    const el = document.getElementById(week.id+'-progress');
+    if(el) el.textContent = `Progress: ${wChecked}/${wTotal} (${wpct}%)`;
+  });
+}
+
+document.addEventListener('change', e=>{
+  if(e.target.matches('.checklist input[type=checkbox]')){
+    const key = e.target.dataset.key;
+    state[key] = e.target.checked;
+    const lbl = e.target.nextElementSibling;
+    if(lbl) lbl.classList.toggle('done', e.target.checked);
+    updateProgress();
+  }
+});
+
+document.getElementById('exportBtn').onclick = ()=>{
+  const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'ctf-roadmap-progress.json';
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+document.getElementById('importBtn').onclick = ()=> document.getElementById('importFile').click();
+document.getElementById('importFile').onchange = (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = evt=>{
+    try{
+      const data = JSON.parse(evt.target.result);
+      state = data;
+      Object.keys(data).forEach(key=>{
+        const cb = document.getElementById(key);
+        if(cb){ cb.checked = !!data[key]; const lbl = cb.nextElementSibling; if(lbl) lbl.classList.toggle('done', cb.checked); }
+      });
+      updateProgress();
+    }catch(err){ alert('Could not read that file — make sure it is a progress JSON exported from this page.'); }
+  };
+  reader.readAsText(file);
+};
+
+document.getElementById('resetBtn').onclick = ()=>{
+  if(!confirm('Clear all progress in this session?')) return;
+  state = {};
+  allCheckboxes().forEach(cb=>{ cb.checked=false; const lbl=cb.nextElementSibling; if(lbl) lbl.classList.remove('done'); });
+  updateProgress();
+};
+
+updateProgress();
+
+// ---------- Search ----------
+document.getElementById('search').addEventListener('input', e=>{
+  const q = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('.day-card').forEach(card=>{
+    const text = card.textContent.toLowerCase();
+    if(!q || text.includes(q)){
+      card.classList.remove('hidden');
+      if(q) card.classList.add('open');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+});
+
+// ---------- Reading progress bar ----------
+window.addEventListener('scroll', ()=>{
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('readbar').style.width = (scrolled||0)+'%';
+});
+
+// ---------- Mobile menu ----------
+document.getElementById('menuToggle').onclick = ()=> document.getElementById('sidebar').classList.toggle('open');
+
+// ---------- Active nav link on scroll ----------
+const navLinks = Array.from(document.querySelectorAll('.navlink'));
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const link = navLinks.find(l=>l.getAttribute('href')==='#'+entry.target.id);
+      if(link) link.classList.add('active');
+    }
+  });
+}, {rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>{ const el=document.getElementById(s.id); if(el) observer.observe(el); });
+</script>
 </body>
 </html>
